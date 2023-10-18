@@ -1,0 +1,28 @@
+{
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "printWidth": 120,
+  "useTabs": true,
+  "semi": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "arrowParents": "avoid",
+  "quoteProps": "consistent",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "singleAttributePerLine": true,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^~/app/(.*)$",
+    "^~/pages/(.*)$",
+    "^~/widgets/(.*)$",
+    "^~/features/(.*)$",
+    "^~/entities/(.*)$",
+    "^~/shared/(.*)$",
+    "^../(.*)",
+    "^./(.*)",
+    "(.scss)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
