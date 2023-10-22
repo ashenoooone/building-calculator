@@ -10,6 +10,6 @@
     "moduleResolution": "node",
     "baseUrl": "."
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", 'declarations.d.ts'],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "declarations.d.ts"],
   "exclude": ["node_modules"]
 }
