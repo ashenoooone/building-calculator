@@ -1,15 +1,15 @@
 {
-  "compilerOptions": {
-    "outDir": "./build/",
-    "noImplicitAny": true,
-    "module": "es6",
-    "esModuleInterop": true,
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "baseUrl": "."
-  },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "declarations.d.ts"],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"outDir": "./build/",
+		"noImplicitAny": true,
+		"module": "es6",
+		"esModuleInterop": true,
+		"target": "es5",
+		"jsx": "react",
+		"allowJs": true,
+		"moduleResolution": "node",
+		"baseUrl": "."
+	},
+	"include": ["./src/**/*.ts", "./src/**/*.tsx", "declarations.d.ts"],
+	"exclude": ["node_modules"]
 }

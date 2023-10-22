@@ -1,38 +1,47 @@
 {
-  "env": {
-    "browser": true,
-    "es2022": true,
-    "node": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "prettier"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
-  "settings": {
-    "react": {
-      "version": "999.999.999"
-    }
-  },
-  "rules": {
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-unused-vars": [1],
-    "@typescript-eslint/no-var-requires": [1],
-    "@typescript-eslint/no-explicit-any": [1]
-  }
+	"env": {
+		"browser": true,
+		"es2022": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended",
+		"prettier",
+		"airbnb"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": ["react", "@typescript-eslint"],
+	"settings": {
+		"react": {
+			"version": "999.999.999"
+		}
+	},
+	"rules": {
+		"react/jsx-uses-react": "off",
+		"react/react-in-jsx-scope": "off",
+		"indent": [0],
+		"no-tabs": [0],
+		"arrow-body-style": [0],
+		"react/jsx-indent": [0],
+		"react/require-default-props": [1],
+		"import/no-extraneous-dependencies": [0],
+		"import/extensions": [0],
+		"comma-dangle": [0],
+		"import/no-unresolved": [0],
+		"import/prefer-default-export": [0],
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "tsx", "ts"] }],
+		"@typescript-eslint/no-unused-vars": [1],
+		"@typescript-eslint/no-var-requires": [1],
+		"@typescript-eslint/no-explicit-any": [1]
+	}
 }

@@ -1,11 +1,13 @@
 import webpack from 'webpack';
-import { BuildOptions } from './types';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import { BuildOptions } from './types';
 
-export const buildWebpackPlugins = (options: BuildOptions): webpack.WebpackPluginInstance[] => {
+export const buildWebpackPlugins = (
+	options: BuildOptions
+): webpack.WebpackPluginInstance[] => {
 	const plugins: webpack.WebpackPluginInstance[] = [
 		new HtmlWebpackPlugin({
 			template: options.paths.html,

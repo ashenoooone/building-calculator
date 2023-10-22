@@ -1,8 +1,8 @@
-import {BuildOptions} from "./types";
+import { BuildOptions } from './types';
 
 export const buildDevServer = (options: BuildOptions) => {
-  return {
-    historyApiFallback: true,
-    port: options.port,
-  }
-}
+	return {
+		historyApiFallback: true,
+		port: options.port
+	};
+};

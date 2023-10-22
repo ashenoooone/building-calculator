@@ -2,9 +2,9 @@ const path = require('path');
 const fs = require('fs/promises');
 const toUpperCase = require('../../../toUpperCase/toUpperCase');
 
-const getIndexTsContent = (sliceName) => `export { ${toUpperCase(sliceName)} } from './ui/${toUpperCase(
+const getIndexTsContent = (sliceName) => `export { ${toUpperCase(
 	sliceName
-)}/${toUpperCase(sliceName)}'
+)} } from './ui/${toUpperCase(sliceName)}/${toUpperCase(sliceName)}'
 export { ${sliceName}SliceActions, ${sliceName}SliceReducer  } from './model/slice/${sliceName}Slice'
 `;
 
