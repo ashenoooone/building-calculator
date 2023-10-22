@@ -8,7 +8,10 @@
 		"jsx": "react",
 		"allowJs": true,
 		"moduleResolution": "node",
-		"baseUrl": "."
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./src/*"]
+		}
 	},
 	"include": ["./src/**/*.ts", "./src/**/*.tsx", "declarations.d.ts"],
 	"exclude": ["node_modules"]
