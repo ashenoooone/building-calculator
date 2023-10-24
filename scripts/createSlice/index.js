@@ -1,4 +1,5 @@
 const generateSlice = require('./generateSlice');
+
 const slice = process.argv[2];
 const segment = process.argv[3];
 
