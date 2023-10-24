@@ -1,10 +1,11 @@
-import React, { createContext, FC, PropsWithChildren, useState } from 'react';
+import React, { createContext, FC, PropsWithChildren, useMemo, useState } from 'react';
 import { THEME_KEY } from './constants';
 import { ThemeProviderConfig, UseThemeProps } from './types';
 
 const defaultContextValue: ThemeProviderConfig = null;
 
-export const ThemeProviderContext = createContext<ThemeProviderConfig>(defaultContextValue);
+export const ThemeProviderContext =
+	createContext<ThemeProviderConfig>(defaultContextValue);
 
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [theme, setTheme] = useState<string | null>(null);
@@ -20,17 +21,23 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 			throw new Error('root is undefined');
 		}
 
-		for (const variable of Object.entries(config.variables)) {
-			const [name, value] = variable;
-			root.style.setProperty(name, value);
-		}
+		Object.entries(config.variables).map(([name, value]) =>
+			root.style.setProperty(name, value)
+		);
 
 		setTheme(config.name);
 		localStorage.setItem(THEME_KEY, config.name);
 	};
 
+	const value = useMemo(() => {
+		return {
+			theme,
+			setTheme: handleThemeChange
+		};
+	}, [theme]);
+
 	return (
-		<ThemeProviderContext.Provider value={{ theme, setTheme: handleThemeChange }}>
+		<ThemeProviderContext.Provider value={value}>
 			{children}
 		</ThemeProviderContext.Provider>
 	);

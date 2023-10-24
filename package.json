@@ -8,8 +8,8 @@
 		"generate:slice": "node ./scripts/createSlice/index.js",
 		"dev": "webpack-dev-server --port=3000 --stats-children",
 		"storybook": "storybook dev -p 6006",
-		"lint": "eslint --ext .ts,.tsx",
-		"lint:fix": "npm run lint -- --fix",
+		"lint": "eslint \"**/*.{ts,tsx}\"",
+		"lint:fix": "eslint \"**/*.{ts,tsx,js}\" --fix",
 		"prettier": "prettier --write .",
 		"build-storybook": "storybook build",
 		"prepare": "husky install"
@@ -50,6 +50,7 @@
 		"eslint-plugin-react-hooks": "4.6.0",
 		"file-loader": "^6.2.0",
 		"html-webpack-plugin": "^5.5.0",
+		"husky": "^8.0.0",
 		"mini-css-extract-plugin": "^2.7.6",
 		"postcss-loader": "^7.3.3",
 		"prettier": "^3.0.3",
@@ -62,11 +63,12 @@
 		"typescript": "^5.2.2",
 		"webpack": "^5.89.0",
 		"webpack-cli": "^5.1.4",
-		"webpack-dev-server": "^4.15.1",
-		"husky": "^8.0.0"
+		"webpack-dev-server": "^4.15.1"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.7",
+		"autoprefixer": "^10.4.16",
+		"postcss-preset-env": "^9.2.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-redux": "^8.1.3",

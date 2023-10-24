@@ -1,6 +1,8 @@
 const fs = require('fs/promises');
 const path = require('path');
 const toUpperCase = require('../../../toUpperCase/toUpperCase');
+const toLowerCase = require('../../../toLowerCase/toLowerCase');
+
 const getSliceContent = (sliceName) => `import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -23,7 +25,7 @@ const getTypesContent = (sliceName) => `export interface ${sliceName}Schema {
 module.exports = async (modelPath, sliceName) => {
 	await fs.mkdir(modelPath);
 	const sliceFolderPath = path.join(modelPath, 'slice');
-	const slicePath = path.join(sliceFolderPath, sliceName.toLowerCase() + 'Slice.ts');
+	const slicePath = path.join(sliceFolderPath, `${toLowerCase(sliceName)}Slice.ts`);
 	const typesPath = path.join(modelPath, 'types.ts');
 	await fs.mkdir(sliceFolderPath);
 	await fs.writeFile(typesPath, getTypesContent(toUpperCase(sliceName)));

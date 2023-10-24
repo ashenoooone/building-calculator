@@ -6,7 +6,7 @@ export const buildWebpackResolvers = (options: BuildOptions): ResolveOptions => 
 	return {
 		preferAbsolute: true,
 		alias: {
-			'~': path.resolve(__dirname, './src')
+			'~': path.resolve(__dirname, '../../src')
 		},
 		modules: [options.paths.src, 'node_modules'],
 		extensions: ['.tsx', '.ts', '.js', '.scss'],

@@ -1,5 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
+const toLowerCase = require('../../../toLowerCase/toLowerCase');
 
 const getThunkContent = (
 	sliceName
@@ -14,6 +15,6 @@ export const ${sliceName}Thunk = createAsyncThunk(
 
 module.exports = async (apiPath, sliceName) => {
 	await fs.mkdir(apiPath);
-	const thunkPath = path.join(apiPath, `${sliceName.toLowerCase()}Thunk.ts`);
+	const thunkPath = path.join(apiPath, `${toLowerCase(sliceName)}Thunk.ts`);
 	await fs.writeFile(thunkPath, getThunkContent(sliceName));
 };

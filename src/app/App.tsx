@@ -7,5 +7,5 @@ interface AppProps {
 export function App(props: AppProps) {
 	const { className = '', children } = props;
 
-	return (<div>1</div>);
+	return <div>1</div>;
 }
