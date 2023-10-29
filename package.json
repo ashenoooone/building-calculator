@@ -66,6 +66,7 @@
 		"webpack-dev-server": "^4.15.1"
 	},
 	"dependencies": {
+		"@headlessui/react": "^1.7.17",
 		"@reduxjs/toolkit": "^1.9.7",
 		"autoprefixer": "^10.4.16",
 		"postcss-preset-env": "^9.2.0",

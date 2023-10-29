@@ -1,7 +1,8 @@
 import React, { CSSProperties, memo, useCallback, useMemo } from 'react';
+import { Transition } from '@headlessui/react';
 import { classNames } from '~/shared/lib/classNames';
 import cls from './Navlink.module.scss';
-import DownSvg from '~/shared/assets/nav_down_dir.svg';
+import { useHover } from '~/shared/lib/useHover';
 
 interface NavlinkProps {
 	className?: string;
@@ -21,6 +22,7 @@ export const Navlink = memo((props: NavlinkProps) => {
 		width = 46,
 		height = 46
 	} = props;
+	const [hoverRef, isHover] = useHover();
 
 	const style = useMemo<CSSProperties>(() => {
 		return {
@@ -42,17 +44,26 @@ export const Navlink = memo((props: NavlinkProps) => {
 				>
 					{title}
 				</div>
-				{text && (
-					<div className={cls.text}>
-						<span>{text}</span> <DownSvg className={cls.icon} />
-					</div>
-				)}
+				<Transition
+					as='div'
+					show={isHover}
+					enter='transition-opacity duration-200'
+					enterFrom='opacity-0'
+					enterTo='opacity-100'
+					leave='transition-opacity duration-200'
+					leaveFrom='opacity-100'
+					leaveTo='opacity-0'
+					className={classNames(cls.text, {}, [])}
+				>
+					<span>{text}</span>
+				</Transition>
 			</>
 		);
-	}, [style, text, title]);
+	}, [isHover, style, text, title]);
 
 	return (
 		<button
+			ref={hoverRef}
 			type='button'
 			onClick={onNavlinkClick}
 			className={classNames(cls.Navlink, {}, [className])}
