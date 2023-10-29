@@ -1,63 +1,63 @@
 .Flex {
-    @apply flex;
+	@apply flex;
 }
 
 .justifyStart {
-    @apply justify-start
+	@apply justify-start;
 }
 
 .justifyCenter {
-    @apply justify-center
+	@apply justify-center;
 }
 
 .justifyEnd {
-    @apply justify-end
+	@apply justify-end;
 }
 
 .justifyBetween {
-    @apply justify-between
+	@apply justify-between;
 }
 
 .alignStart {
-    @apply items-start
+	@apply items-start;
 }
 
 .alignCenter {
-    @apply items-center
+	@apply items-center;
 }
 
 .alignEnd {
-    @apply items-end
+	@apply items-end;
 }
 
 .stretch {
-    @apply items-stretch
+	@apply items-stretch;
 }
 
 .directionRow {
-    @apply flex-row
+	@apply flex-row;
 }
 
 .directionColumn {
-    @apply flex-col
+	@apply flex-col;
 }
 
 .gap4 {
-    @apply gap-1
+	@apply gap-1;
 }
 
 .gap8 {
-    @apply gap-2
+	@apply gap-2;
 }
 
 .gap16 {
-    @apply gap-4
+	@apply gap-4;
 }
 
 .gap32 {
-    @apply gap-8
+	@apply gap-8;
 }
 
 .max {
-    @apply w-full
+	@apply w-full;
 }

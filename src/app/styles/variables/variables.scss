@@ -1,32 +1,27 @@
 :root {
-  --bg-color: #5A5B65;
-  --primary-color: #D9D9D9;
-  --secondary-color: #7684A1;
-  --inverted-primary-color: rgb(89, 90, 100, .8);
+	--bg-color: #5a5b65;
+	--primary-color: #d9d9d9;
+	--secondary-color: #7684a1;
+	--inverted-primary-color: rgb(89, 90, 100, 0.8);
 
-  // fonts
-  --font-family-name: 'Manrope', 'Times New Roman', serif;
-  --font-size-xxl: 32px;
-  --font-line-xxl: 40px;
-  --font-xxl: var(--font-size-xxl) / var(--font-line-xxl)
-  var(--font-family-name);
-  --font-size-xl: 24px;
-  --font-line-xl: 32px;
-  --font-xl: var(--font-size-xl) / var(--font-line-xl)
-  var(--font-family-name);
-  --font-size-md: 16px;
-  --font-line-md: 24px;
-  --font-md: var(--font-size-md) / var(--font-line-md)
-  var(--font-family-name);
-  --font-line-sm: 16px;
-  --font-size-sm: 8px;
-  --font-sm: var(--font-size-sm) / var(--font-line-sm)
-  var(--font-family-name);
+	// fonts
+	--font-family-name: 'Manrope', 'Times New Roman', serif;
+	--font-size-xxl: 32px;
+	--font-line-xxl: 40px;
+	--font-xxl: var(--font-size-xxl) / var(--font-line-xxl)
+		var(--font-family-name);
+	--font-size-xl: 24px;
+	--font-line-xl: 32px;
+	--font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-name);
+	--font-size-md: 16px;
+	--font-line-md: 24px;
+	--font-md: var(--font-size-md) / var(--font-line-md) var(--font-family-name);
+	--font-line-sm: 16px;
+	--font-size-sm: 8px;
+	--font-sm: var(--font-size-sm) / var(--font-line-sm) var(--font-family-name);
 
-
-  // animations
-  --transition-duration-xl: 1s;
-  --transition-duration-md: .5s;
-  --transition-duration-s: .2s;
-
+	// animations
+	--transition-duration-xl: 1s;
+	--transition-duration-md: 0.5s;
+	--transition-duration-s: 0.2s;
 }

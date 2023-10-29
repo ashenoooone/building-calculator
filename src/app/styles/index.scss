@@ -1,10 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "variables/variables";
-@import "font/stylesheet.css";
+@import 'variables/variables';
+@import 'font/stylesheet.css';
 
 body {
-  background: var(--bg-color);
-  font: var(--font-md);
+	background: var(--bg-color);
+	font: var(--font-md);
 }
