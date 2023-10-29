@@ -1,0 +1,63 @@
+.Flex {
+    @apply flex;
+}
+
+.justifyStart {
+    @apply justify-start
+}
+
+.justifyCenter {
+    @apply justify-center
+}
+
+.justifyEnd {
+    @apply justify-end
+}
+
+.justifyBetween {
+    @apply justify-between
+}
+
+.alignStart {
+    @apply items-start
+}
+
+.alignCenter {
+    @apply items-center
+}
+
+.alignEnd {
+    @apply items-end
+}
+
+.stretch {
+    @apply items-stretch
+}
+
+.directionRow {
+    @apply flex-row
+}
+
+.directionColumn {
+    @apply flex-col
+}
+
+.gap4 {
+    @apply gap-1
+}
+
+.gap8 {
+    @apply gap-2
+}
+
+.gap16 {
+    @apply gap-4
+}
+
+.gap32 {
+    @apply gap-8
+}
+
+.max {
+    @apply w-full
+}

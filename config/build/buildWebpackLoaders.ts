@@ -1,24 +1,12 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import { BuildOptions } from './types';
 import { buildBabelLoader } from './loaders/buildBabelLoader';
+import { buildCssLoader } from './loaders/buildCssLoader';
 
-export const buildWebpackLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
-	const isDev = options.mode === 'development';
-
-	const cssLoader = {
-		rules: [
-			{
-				test: /\.s?[ac]ss$/i,
-				use: [
-					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-					{ loader: 'css-loader', options: { modules: true } },
-					'postcss-loader',
-					'sass-loader'
-				]
-			}
-		]
-	};
+export const buildWebpackLoaders = (
+	options: BuildOptions
+): webpack.RuleSetRule[] => {
+	const cssLoader = buildCssLoader({ isDev: options.mode === 'development' });
 
 	const codeBabelLoader = buildBabelLoader({
 		isTSX: false,
@@ -31,7 +19,7 @@ export const buildWebpackLoaders = (options: BuildOptions): webpack.RuleSetRule[
 	});
 
 	const fileLoader = {
-		test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+		test: /\.(png|jpe?g|gif|woff2|woff|eot)$/i,
 		use: [
 			{
 				loader: 'file-loader'
