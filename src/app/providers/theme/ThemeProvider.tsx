@@ -1,4 +1,10 @@
-import React, { createContext, FC, PropsWithChildren, useMemo, useState } from 'react';
+import React, {
+	createContext,
+	FC,
+	PropsWithChildren,
+	useMemo,
+	useState
+} from 'react';
 import { THEME_KEY } from './constants';
 import { ThemeProviderConfig, UseThemeProps } from './types';
 

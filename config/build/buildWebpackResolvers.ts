@@ -2,7 +2,9 @@ import * as path from 'path';
 import { ResolveOptions } from 'webpack';
 import { BuildOptions } from './types';
 
-export const buildWebpackResolvers = (options: BuildOptions): ResolveOptions => {
+export const buildWebpackResolvers = (
+	options: BuildOptions
+): ResolveOptions => {
 	return {
 		preferAbsolute: true,
 		alias: {

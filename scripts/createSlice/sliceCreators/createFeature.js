@@ -9,7 +9,14 @@ const createPublicApi = require('./segments/createPublicApi');
 const existsAsync = require('../../fs/existAsync/existAsync');
 
 module.exports = async (sliceName) => {
-	const pathToFeatures = path.resolve(__dirname, '..', '..', '..', 'src', 'features');
+	const pathToFeatures = path.resolve(
+		__dirname,
+		'..',
+		'..',
+		'..',
+		'src',
+		'features'
+	);
 	const isExists = await existsAsync(pathToFeatures);
 	if (!isExists) {
 		await fs.mkdir(pathToFeatures);

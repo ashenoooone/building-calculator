@@ -7,7 +7,14 @@ const createUi = require('./segments/createUi');
 const createPublicApi = require('./segments/createPublicApi');
 
 module.exports = async (sliceName) => {
-	const pathToEntities = path.resolve(__dirname, '..', '..', '..', 'src', 'entities');
+	const pathToEntities = path.resolve(
+		__dirname,
+		'..',
+		'..',
+		'..',
+		'src',
+		'entities'
+	);
 	const isExists = await existsAsync(pathToEntities);
 	if (!isExists) {
 		await fs.mkdir(pathToEntities);

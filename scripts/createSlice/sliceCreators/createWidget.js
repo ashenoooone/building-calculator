@@ -8,7 +8,14 @@ const createUi = require('./segments/createUi');
 const createPublicApi = require('./segments/createPublicApi');
 
 module.exports = async (sliceName) => {
-	const pathToWidgets = path.resolve(__dirname, '..', '..', '..', 'src', 'widgets');
+	const pathToWidgets = path.resolve(
+		__dirname,
+		'..',
+		'..',
+		'..',
+		'src',
+		'widgets'
+	);
 	const isExists = await existsAsync(pathToWidgets);
 	if (!isExists) {
 		await fs.mkdir(pathToWidgets);
