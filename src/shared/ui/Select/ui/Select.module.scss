@@ -1,93 +1,92 @@
 .Select {
-  position: relative;
-  width: max-content;
-  transition: all var(--transition-duration-s) ease-in-out;
+	position: relative;
+	width: max-content;
+	transition: all var(--transition-duration-s) ease-in-out;
 
-  &:hover {
-    opacity: .8;
-  }
+	&:hover {
+		opacity: 0.8;
+	}
 }
 
 .trigger {
-  border: 2px solid var(--primary-color);
-  padding: 5px 10px;
-  border-radius: 8px;
-  background: var(--inverted-primary-color);
+	border: 2px solid var(--primary-color);
+	padding: 5px 10px;
+	border-radius: 8px;
+	background: var(--inverted-primary-color);
 }
 
 .options {
-  max-width: 200px;
-  width: max-content;
-  border: 2px solid var(--primary-color);
-  position: absolute;
-  border-radius: 8px;
+	max-width: 200px;
+	width: max-content;
+	border: 2px solid var(--primary-color);
+	position: absolute;
+	border-radius: 8px;
 }
 
 .option {
-  cursor: pointer;
-  background: var(--inverted-primary-color);
-  width: 100%;
-  height: 100%;
-  padding: 10px;
+	cursor: pointer;
+	background: var(--inverted-primary-color);
+	width: 100%;
+	height: 100%;
+	padding: 10px;
 
-  &.disabled {
-    opacity: .7;
-    pointer-events: none;
-  }
+	&.disabled {
+		opacity: 0.7;
+		pointer-events: none;
+	}
 
+	&:first-child {
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+	}
 
-  &:first-child {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
+	&:last-child {
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+	}
 
-  &:last-child {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-
-  &:hover {
-    opacity: .8;
-    background: var(--inverted-primary-color-80);
-  }
+	&:hover {
+		opacity: 0.8;
+		background: var(--inverted-primary-color-80);
+	}
 }
 
 .top_left {
-  @apply bottom-full left-0 mb-2;
+	@apply bottom-full left-0 mb-2;
 }
 
 .top_right {
-  @apply bottom-full right-0 mb-2;
+	@apply bottom-full right-0 mb-2;
 }
 
 .top_center {
-  @apply bottom-full left-1/2 mb-2 -translate-x-1/2;
+	@apply bottom-full left-1/2 mb-2 -translate-x-1/2;
 }
 
 .right_top {
-  @apply top-0 left-full ml-2;
+	@apply top-0 left-full ml-2;
 }
 
 .right_bottom {
-  @apply bottom-0 left-full ml-2;
+	@apply bottom-0 left-full ml-2;
 }
 
 .left_top {
-  @apply top-0 right-full mr-2;
+	@apply top-0 right-full mr-2;
 }
 
 .left_bottom {
-  @apply bottom-0 right-full mr-2;
+	@apply bottom-0 right-full mr-2;
 }
 
 .bottom_right {
-  @apply top-full right-0 mt-2;
+	@apply top-full right-0 mt-2;
 }
 
 .bottom_center {
-  @apply top-full left-1/2 -translate-x-1/2 mt-2;
+	@apply top-full left-1/2 -translate-x-1/2 mt-2;
 }
 
 .bottom_left {
-  @apply top-full  mt-2;
+	@apply top-full  mt-2;
 }
