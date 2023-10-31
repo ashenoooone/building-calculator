@@ -4,6 +4,8 @@ import { classNames } from '~/shared/lib/classNames';
 import cls from './Navlink.module.scss';
 import { useHover } from '~/shared/lib/useHover';
 
+type NavlinkStatusType = 'active' | 'visited' | 'blocked';
+
 interface NavlinkProps {
 	className?: string;
 	text?: string | number;
@@ -11,6 +13,7 @@ interface NavlinkProps {
 	onClick?: () => void;
 	width?: number;
 	height?: number;
+	status: NavlinkStatusType;
 }
 
 export const Navlink = memo((props: NavlinkProps) => {
@@ -20,7 +23,8 @@ export const Navlink = memo((props: NavlinkProps) => {
 		text,
 		onClick,
 		width = 46,
-		height = 46
+		height = 46,
+		status = 'active'
 	} = props;
 	const [hoverRef, isHover] = useHover();
 
@@ -44,19 +48,21 @@ export const Navlink = memo((props: NavlinkProps) => {
 				>
 					{title}
 				</div>
-				<Transition
-					as='div'
-					show={isHover}
-					enter='transition-opacity duration-200'
-					enterFrom='opacity-0'
-					enterTo='opacity-100'
-					leave='transition-opacity duration-200'
-					leaveFrom='opacity-100'
-					leaveTo='opacity-0'
-					className={classNames(cls.text, {}, [])}
-				>
-					<span>{text}</span>
-				</Transition>
+				{text && (
+					<Transition
+						as='div'
+						show={isHover}
+						enter='transition-opacity duration-200'
+						enterFrom='opacity-0'
+						enterTo='opacity-100'
+						leave='transition-opacity duration-200'
+						leaveFrom='opacity-100'
+						leaveTo='opacity-0'
+						className={classNames(cls.text, {}, [])}
+					>
+						<span>{text}</span>
+					</Transition>
+				)}
 			</>
 		);
 	}, [isHover, style, text, title]);
@@ -66,7 +72,7 @@ export const Navlink = memo((props: NavlinkProps) => {
 			ref={hoverRef}
 			type='button'
 			onClick={onNavlinkClick}
-			className={classNames(cls.Navlink, {}, [className])}
+			className={classNames(cls.Navlink, {}, [className, cls[status]])}
 		>
 			{content}
 		</button>

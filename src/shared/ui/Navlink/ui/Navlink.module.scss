@@ -1,34 +1,56 @@
 .Navlink {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	cursor: pointer;
-	position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+
+  &.active {
+    .title {
+      background: var(--primary-color);
+    }
+  }
+
+  &.visited {
+    opacity: .75;
+    .title {
+      background: var(--primary-color);
+    }
+  }
+
+  &.blocked {
+    pointer-events: none;
+
+    .title {
+      background: var(--secondary-color);
+    }
+  }
 }
 
 .title {
-	background: var(--primary-color);
-	border-radius: 50%;
-	color: var(--inverted-primary-color);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font: var(--font-xl);
+  border-radius: 50%;
+  color: var(--inverted-primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-xl);
 }
 
 .icon {
-	fill: var(--primary-color);
-	width: 20px;
-	margin: 5px auto 0;
+  fill: var(--primary-color);
+  width: 20px;
+  margin: 5px auto 0;
 }
 
 .text {
-	position: absolute;
-	top: calc(100% + 5px);
-	cursor: text;
-	user-select: text;
-	background: var(--primary-color);
-	color: var(--inverted-primary-color);
-	border-radius: 15px;
-	padding: 5px 10px;
+  position: absolute;
+  top: calc(100% + 5px);
+  cursor: text;
+  user-select: text;
+  background: var(--primary-color);
+  color: var(--inverted-primary-color);
+  border-radius: 15px;
+  padding: 5px 10px;
 }
+
+
