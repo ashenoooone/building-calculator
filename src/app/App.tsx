@@ -1,30 +1,11 @@
-import React, { ReactNode } from 'react';
-import { Navlink } from '~/shared/ui/Navlink';
-import { VStack } from '~/shared/ui/Stack';
+import React from 'react';
+import { Navbar } from '~/widgets/Navbar';
+import { Page } from '~/shared/ui/Page';
 
-interface AppProps {
-	className?: string;
-	children?: ReactNode;
-}
-export function App(props: AppProps) {
-	const { className = '', children } = props;
+export function App() {
 	return (
-		<VStack
-			gap='16'
-			align='center'
-		>
-			<Navlink
-				title='10'
-				text='Полы'
-			/>
-			<Navlink
-				title='11'
-				text='Фундамент'
-			/>
-			<Navlink
-				title='12'
-				text='Двери/окна'
-			/>
-		</VStack>
+		<Page>
+			<Navbar />
+		</Page>
 	);
 }

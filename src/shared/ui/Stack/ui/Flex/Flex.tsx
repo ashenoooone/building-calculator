@@ -10,7 +10,7 @@ import cls from './Flex.module.scss';
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
 export type FlexAlign = 'start' | 'center' | 'end' | 'stretch';
 export type FlexDirection = 'row' | 'column';
-export type FlexGap = '4' | '8' | '16' | '32';
+export type FlexGap = '4' | '8' | '16' | '32' | '40' | '50' | '64';
 
 const justifyClasses: Record<FlexJustify, string> = {
 	start: cls.justifyStart,
@@ -35,7 +35,10 @@ const gapClasses: Record<FlexGap, string> = {
 	4: cls.gap4,
 	8: cls.gap8,
 	16: cls.gap16,
-	32: cls.gap32
+	32: cls.gap32,
+	40: cls.gap40,
+	50: cls.gap50,
+	64: cls.gap64
 };
 
 type DivProps = DetailedHTMLProps<

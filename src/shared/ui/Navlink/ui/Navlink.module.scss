@@ -4,6 +4,9 @@
 	align-items: center;
 	cursor: pointer;
 	position: relative;
+	opacity: 1;
+	font: var(--font-xl);
+
 
 	&.active {
 		.title {
@@ -33,7 +36,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font: var(--font-xl);
 }
 
 .icon {
@@ -45,10 +47,12 @@
 .text {
 	position: absolute;
 	top: calc(100% + 5px);
+	font: var(--font-md);
 	cursor: text;
 	user-select: text;
 	background: var(--primary-color);
 	color: var(--inverted-primary-color);
 	border-radius: 15px;
 	padding: 5px 10px;
+	z-index: 10;
 }

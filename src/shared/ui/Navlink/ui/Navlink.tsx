@@ -13,7 +13,7 @@ interface NavlinkProps {
 	onClick?: () => void;
 	width?: number;
 	height?: number;
-	status: NavlinkStatusType;
+	status?: NavlinkStatusType;
 }
 
 export const Navlink = memo((props: NavlinkProps) => {
