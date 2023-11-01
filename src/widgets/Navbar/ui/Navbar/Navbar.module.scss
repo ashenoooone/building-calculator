@@ -1,16 +1,18 @@
 .Navbar {
-  width: 100%;
+	width: 100%;
 }
 
 .title {
-  font: var(--font-xxl);
-  margin-bottom: 10px;
-  margin-left: 10px;
+	font: var(--font-xxl);
+	margin-bottom: 10px;
+	margin-left: 10px;
 }
 
 .line {
-  border: none; /* Убираем границу для браузера Firefox */
-  background-color: var(--secondary-color); /* Цвет линии для браузера Firefox и Opera */
-  height: 1px; /* Толщина линии */
-  flex-grow: 1;
+	border: none; /* Убираем границу для браузера Firefox */
+	background-color: var(
+		--secondary-color
+	); /* Цвет линии для браузера Firefox и Opera */
+	height: 1px; /* Толщина линии */
+	flex-grow: 1;
 }
