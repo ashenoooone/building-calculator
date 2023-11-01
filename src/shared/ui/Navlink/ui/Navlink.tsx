@@ -1,4 +1,10 @@
-import React, { CSSProperties, memo, useCallback, useMemo } from 'react';
+import React, {
+	CSSProperties,
+	memo,
+	ReactNode,
+	useCallback,
+	useMemo
+} from 'react';
 import { Transition } from '@headlessui/react';
 import { classNames } from '~/shared/lib/classNames';
 import cls from './Navlink.module.scss';
@@ -9,7 +15,7 @@ type NavlinkStatusType = 'active' | 'visited' | 'blocked';
 interface NavlinkProps {
 	className?: string;
 	text?: string | number;
-	title: string | number;
+	title: string | number | ReactNode;
 	onClick?: () => void;
 	width?: number;
 	height?: number;

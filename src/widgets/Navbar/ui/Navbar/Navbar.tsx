@@ -3,6 +3,8 @@ import cls from './Navbar.module.scss';
 import { Navlink } from '~/shared/ui/Navlink';
 import { classNames } from '~/shared/lib/classNames';
 import { HStack } from '~/shared/ui/Stack';
+import HomeSvg from '~/shared/assets/home.svg';
+import CalcSvg from '~/shared/assets/calc.svg';
 
 interface NavbarProps {
 	className?: string;
@@ -30,6 +32,11 @@ export const Navbar = (props: NavbarProps) => {
 				justify='between'
 				align='center'
 			>
+				<Navlink
+					title={<HomeSvg />}
+					text='Характеристики дома'
+				/>
+				<hr className={cls.line} />
 				{Navlist.map((item, idx) => {
 					return (
 						<>
@@ -37,10 +44,14 @@ export const Navbar = (props: NavbarProps) => {
 								title={idx + 1}
 								text={item}
 							/>
-							{idx < Navlist.length - 1 && <hr className={cls.line} />}
+							<hr className={cls.line} />
 						</>
 					);
 				})}
+				<Navlink
+					title={<CalcSvg />}
+					text='Результат'
+				/>
 			</HStack>
 		</div>
 	);
