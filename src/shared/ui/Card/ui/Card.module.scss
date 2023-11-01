@@ -1,22 +1,20 @@
 .Card {
-  padding: 10px;
-  border-radius: 8px;
+	padding: 10px;
+	border-radius: 8px;
 
-  &.default.border {
-    border: 3px solid var(--primary-color);
-  }
+	&.default.border {
+		border: 3px solid var(--primary-color);
+	}
 
-  &.inverted.border {
-    border: 3px solid var(--inverted-primary-color);
-  }
+	&.inverted.border {
+		border: 3px solid var(--inverted-primary-color);
+	}
 
-  &.default {
-    background: var(--bg-color);
-  }
+	&.default {
+		background: var(--bg-color);
+	}
 
-  &.inverted {
-    background: var(--bg-color-inverted);
-  }
+	&.inverted {
+		background: var(--bg-color-inverted);
+	}
 }
-
-
