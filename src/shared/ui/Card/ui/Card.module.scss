@@ -2,28 +2,28 @@
 	@apply rounded-lg border-[3px] border-transparent;
 
 	&.paddings_sm {
-		@apply py-2.5 px-5
+		@apply py-2.5 px-5;
 	}
 	&.paddings_m {
-		@apply py-4 px-8
+		@apply py-4 px-8;
 	}
 	&.paddings_xl {
-		@apply py-6 px-12
+		@apply py-6 px-12;
 	}
 
 	&.default.border {
-		@apply border-[3px] border-inverted-primary
+		@apply border-[3px] border-inverted-primary;
 	}
 
 	&.inverted.border {
-		@apply border-[3px] border-primary
+		@apply border-[3px] border-primary;
 	}
 
 	&.default {
-		@apply bg-[var(--bg-color)]
+		@apply bg-[var(--bg-color)];
 	}
 
 	&.inverted {
-		@apply bg-inverted-primary
+		@apply bg-inverted-primary;
 	}
 }

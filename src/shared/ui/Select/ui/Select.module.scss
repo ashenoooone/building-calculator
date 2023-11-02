@@ -1,77 +1,77 @@
 .Select {
-  @apply relative w-max transition ease-in-out duration-[var(--transition-duration-s)];
+	@apply relative w-max transition ease-in-out duration-[var(--transition-duration-s)];
 
-  &:hover {
-    @apply opacity-80;
-  }
+	&:hover {
+		@apply opacity-80;
+	}
 }
 
 .trigger {
-  @apply border-2 border-primary
+	@apply border-2 border-primary
   py-1.5 px-3
   rounded-lg bg-inverted-primary;
 }
 
 .options {
-  @apply max-w-[200px] w-max border-2 border-primary absolute rounded-lg;
+	@apply max-w-[200px] w-max border-2 border-primary absolute rounded-lg;
 }
 
 .option {
-  @apply cursor-pointer bg-inverted-primary w-full h-full p-2.5;
+	@apply cursor-pointer bg-inverted-primary w-full h-full p-2.5;
 
-  &.disabled {
-    @apply opacity-70 pointer-events-none;
-  }
+	&.disabled {
+		@apply opacity-70 pointer-events-none;
+	}
 
-  &:first-child {
-    @apply rounded-t-lg;
-  }
+	&:first-child {
+		@apply rounded-t-lg;
+	}
 
-  &:last-child {
-    @apply rounded-b-lg;
-  }
+	&:last-child {
+		@apply rounded-b-lg;
+	}
 
-  &:hover {
-    @apply opacity-80 bg-inverted-primary;
-  }
+	&:hover {
+		@apply opacity-80 bg-inverted-primary;
+	}
 }
 
 .top_left {
-  @apply bottom-full left-0 mb-2;
+	@apply bottom-full left-0 mb-2;
 }
 
 .top_right {
-  @apply bottom-full right-0 mb-2;
+	@apply bottom-full right-0 mb-2;
 }
 
 .top_center {
-  @apply bottom-full left-1/2 mb-2 -translate-x-1/2;
+	@apply bottom-full left-1/2 mb-2 -translate-x-1/2;
 }
 
 .right_top {
-  @apply top-0 left-full ml-2;
+	@apply top-0 left-full ml-2;
 }
 
 .right_bottom {
-  @apply bottom-0 left-full ml-2;
+	@apply bottom-0 left-full ml-2;
 }
 
 .left_top {
-  @apply top-0 right-full mr-2;
+	@apply top-0 right-full mr-2;
 }
 
 .left_bottom {
-  @apply bottom-0 right-full mr-2;
+	@apply bottom-0 right-full mr-2;
 }
 
 .bottom_right {
-  @apply top-full right-0 mt-2;
+	@apply top-full right-0 mt-2;
 }
 
 .bottom_center {
-  @apply top-full left-1/2 -translate-x-1/2 mt-2;
+	@apply top-full left-1/2 -translate-x-1/2 mt-2;
 }
 
 .bottom_left {
-  @apply top-full  mt-2;
+	@apply top-full  mt-2;
 }
