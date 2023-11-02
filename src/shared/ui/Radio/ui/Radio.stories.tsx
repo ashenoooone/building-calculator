@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Radio } from './Radio';
 
 const meta: Meta<typeof Radio> = {
-	title: 'Radio',
+	title: 'shared/Radio',
 	component: Radio
 };
 
