@@ -1,20 +1,29 @@
 .Card {
-	padding: 10px;
-	border-radius: 8px;
+	@apply rounded-lg border-[3px] border-transparent;
+
+	&.paddings_sm {
+		@apply py-2.5 px-5
+	}
+	&.paddings_m {
+		@apply py-4 px-8
+	}
+	&.paddings_xl {
+		@apply py-6 px-12
+	}
 
 	&.default.border {
-		border: 3px solid var(--primary-color);
+		@apply border-[3px] border-inverted-primary
 	}
 
 	&.inverted.border {
-		border: 3px solid var(--inverted-primary-color);
+		@apply border-[3px] border-primary
 	}
 
 	&.default {
-		background: var(--bg-color);
+		@apply bg-[var(--bg-color)]
 	}
 
 	&.inverted {
-		background: var(--bg-color-inverted);
+		@apply bg-inverted-primary
 	}
 }

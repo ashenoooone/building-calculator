@@ -1,92 +1,77 @@
 .Select {
-	position: relative;
-	width: max-content;
-	transition: all var(--transition-duration-s) ease-in-out;
+  @apply relative w-max transition ease-in-out duration-[var(--transition-duration-s)];
 
-	&:hover {
-		opacity: 0.8;
-	}
+  &:hover {
+    @apply opacity-80;
+  }
 }
 
 .trigger {
-	border: 2px solid var(--primary-color);
-	padding: 5px 10px;
-	border-radius: 8px;
-	background: var(--inverted-primary-color);
+  @apply border-2 border-primary
+  py-1.5 px-3
+  rounded-lg bg-inverted-primary;
 }
 
 .options {
-	max-width: 200px;
-	width: max-content;
-	border: 2px solid var(--primary-color);
-	position: absolute;
-	border-radius: 8px;
+  @apply max-w-[200px] w-max border-2 border-primary absolute rounded-lg;
 }
 
 .option {
-	cursor: pointer;
-	background: var(--inverted-primary-color);
-	width: 100%;
-	height: 100%;
-	padding: 10px;
+  @apply cursor-pointer bg-inverted-primary w-full h-full p-2.5;
 
-	&.disabled {
-		opacity: 0.7;
-		pointer-events: none;
-	}
+  &.disabled {
+    @apply opacity-70 pointer-events-none;
+  }
 
-	&:first-child {
-		border-top-left-radius: 8px;
-		border-top-right-radius: 8px;
-	}
+  &:first-child {
+    @apply rounded-t-lg;
+  }
 
-	&:last-child {
-		border-bottom-left-radius: 8px;
-		border-bottom-right-radius: 8px;
-	}
+  &:last-child {
+    @apply rounded-b-lg;
+  }
 
-	&:hover {
-		opacity: 0.8;
-		background: var(--inverted-primary-color-80);
-	}
+  &:hover {
+    @apply opacity-80 bg-inverted-primary;
+  }
 }
 
 .top_left {
-	@apply bottom-full left-0 mb-2;
+  @apply bottom-full left-0 mb-2;
 }
 
 .top_right {
-	@apply bottom-full right-0 mb-2;
+  @apply bottom-full right-0 mb-2;
 }
 
 .top_center {
-	@apply bottom-full left-1/2 mb-2 -translate-x-1/2;
+  @apply bottom-full left-1/2 mb-2 -translate-x-1/2;
 }
 
 .right_top {
-	@apply top-0 left-full ml-2;
+  @apply top-0 left-full ml-2;
 }
 
 .right_bottom {
-	@apply bottom-0 left-full ml-2;
+  @apply bottom-0 left-full ml-2;
 }
 
 .left_top {
-	@apply top-0 right-full mr-2;
+  @apply top-0 right-full mr-2;
 }
 
 .left_bottom {
-	@apply bottom-0 right-full mr-2;
+  @apply bottom-0 right-full mr-2;
 }
 
 .bottom_right {
-	@apply top-full right-0 mt-2;
+  @apply top-full right-0 mt-2;
 }
 
 .bottom_center {
-	@apply top-full left-1/2 -translate-x-1/2 mt-2;
+  @apply top-full left-1/2 -translate-x-1/2 mt-2;
 }
 
 .bottom_left {
-	@apply top-full  mt-2;
+  @apply top-full  mt-2;
 }
