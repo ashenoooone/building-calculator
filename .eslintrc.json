@@ -49,6 +49,7 @@
 		"react/self-closing-comp": [0],
 		"import/no-unresolved": [0],
 		"quote-props": [0],
+		"react/jsx-curly-newline": [0],
 		"react/button-has-type": [0],
 		"function-paren-newline": [0],
 		"react/jsx-one-expression-per-line": [0],

@@ -1,8 +1,9 @@
-import React, { memo, ReactNode, SelectHTMLAttributes } from 'react';
-import { Listbox } from '@headlessui/react';
-import { classNames } from '~/shared/lib/classNames';
+import React, { Fragment, memo, ReactNode, SelectHTMLAttributes } from 'react';
+import { Listbox, Transition } from '@headlessui/react';
 import cls from './Select.module.scss';
 import { Directions } from '~/shared/types';
+import ChevronDown from '~/shared/assets/chevron_down.svg';
+import { classNames } from '~/shared/lib/classNames';
 
 type valueType = string | number;
 
@@ -56,27 +57,61 @@ export const Select = memo((props: SelectProps) => {
 			as='div'
 			className={classNames(cls.Select, {}, [className])}
 		>
-			<Listbox.Button className={cls.trigger}>
-				{value ?? placeholder}
-			</Listbox.Button>
-			<Listbox.Options
-				className={classNames(cls.options, {}, [DirectionMapper[direction]])}
-			>
-				{selectOptions.map((option) => (
-					<Listbox.Option
-						className={classNames(
-							cls.option,
-							{ [cls.disabled]: option.disabled },
-							[]
-						)}
-						key={option.value}
-						value={value}
-						disabled={option.disabled}
+			<div className={cls.trigger_container}>
+				<Listbox.Button className={cls.trigger}>
+					{placeholder && !value && (
+						<span className='text-gray-400'>{placeholder}</span>
+					)}
+					{value && <span>{value}</span>}
+					<span className={cls.icon_container}>
+						<ChevronDown
+							className={cls.icon}
+							aria-hidden='true'
+						/>
+					</span>
+				</Listbox.Button>
+				<Transition
+					as={Fragment}
+					leave='transition ease-in duration-100'
+					leaveFrom='opacity-100'
+					leaveTo='opacity-0'
+				>
+					<Listbox.Options
+						className={classNames(cls.options, {}, [
+							DirectionMapper[direction]
+						])}
 					>
-						{option.content}
-					</Listbox.Option>
-				))}
-			</Listbox.Options>
+						{selectOptions.map((option) => (
+							<Listbox.Option
+								key={`${option.value}${option.content}`}
+								className={({ active, selected }) =>
+									classNames(
+										cls.option,
+										{
+											[cls.option_active]: active,
+											[cls.option_selected]: selected
+										},
+										[]
+									)
+								}
+								value={option.value}
+							>
+								{({ selected }) => (
+									<span
+										className={classNames(
+											cls.option_span,
+											{ [cls.option_span_active]: selected },
+											[]
+										)}
+									>
+										{option.content}
+									</span>
+								)}
+							</Listbox.Option>
+						))}
+					</Listbox.Options>
+				</Transition>
+			</div>
 		</Listbox>
 	);
 });

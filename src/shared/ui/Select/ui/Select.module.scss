@@ -1,77 +1,116 @@
 .Select {
-	@apply relative w-max transition ease-in-out duration-[var(--transition-duration-s)];
+  @apply relative w-max transition ease-in-out duration-[var(--transition-duration-s)];
 
-	&:hover {
-		@apply opacity-80;
-	}
+  &:hover {
+    @apply opacity-80;
+  }
+}
+
+.trigger_container {
+  @apply relative mt-1;
+}
+
+.icon {
+  @apply h-5 w-5 text-gray-400;
+
+  &_container {
+    @apply pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2;
+  }
 }
 
 .trigger {
-	@apply border-2 border-primary
-  py-1.5 px-3
-  rounded-lg bg-inverted-primary;
+  @apply relative w-full
+  cursor-default rounded-lg bg-white py-2 pl-3
+  pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500
+  focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2
+  focus-visible:ring-offset-orange-300 sm:text-sm;
+  &.active {
+    @apply outline outline-primary/50 focus:outline outline-[3px]
+  }
 }
 
 .options {
-	@apply max-w-[200px] w-max border-2 border-primary absolute rounded-lg;
+  @apply absolute mt-1 overflow-auto rounded-md
+  bg-white py-1 text-base shadow-lg
+  ring-1 ring-black/5 focus:outline-none sm:text-sm;
+}
+
+.option_span {
+  @apply block truncate;
+
+  &_active {
+    @apply text-primary
+  }
 }
 
 .option {
-	@apply cursor-pointer bg-inverted-primary w-full h-full p-2.5;
+  @apply relative cursor-default select-none py-2 px-4 ;
 
-	&.disabled {
-		@apply opacity-70 pointer-events-none;
-	}
+  &_active {
+    @apply bg-amber-100 text-amber-900;
+  }
 
-	&:first-child {
-		@apply rounded-t-lg;
-	}
+  &_selected {
+    @apply bg-amber-100 text-amber-900;
+  }
 
-	&:last-child {
-		@apply rounded-b-lg;
-	}
+  &.disabled {
+    @apply opacity-70 pointer-events-none;
+  }
 
-	&:hover {
-		@apply opacity-80 bg-inverted-primary;
-	}
+  &:first-child {
+    @apply rounded-t-lg;
+  }
+
+  &:last-child {
+    @apply rounded-b-lg;
+  }
+
+  &:hover {
+    @apply opacity-80;
+  }
+
+  &.option_active {
+    @apply opacity-80;
+  }
 }
 
 .top_left {
-	@apply bottom-full left-0 mb-2;
+  @apply bottom-full left-0 mb-2;
 }
 
 .top_right {
-	@apply bottom-full right-0 mb-2;
+  @apply bottom-full right-0 mb-2;
 }
 
 .top_center {
-	@apply bottom-full left-1/2 mb-2 -translate-x-1/2;
+  @apply bottom-full left-1/2 mb-2 -translate-x-1/2;
 }
 
 .right_top {
-	@apply top-0 left-full ml-2;
+  @apply top-0 left-full ml-2;
 }
 
 .right_bottom {
-	@apply bottom-0 left-full ml-2;
+  @apply bottom-0 left-full ml-2;
 }
 
 .left_top {
-	@apply top-0 right-full mr-2;
+  @apply top-0 right-full mr-2;
 }
 
 .left_bottom {
-	@apply bottom-0 right-full mr-2;
+  @apply bottom-0 right-full mr-2;
 }
 
 .bottom_right {
-	@apply top-full right-0 mt-2;
+  @apply top-full right-0 mt-2;
 }
 
 .bottom_center {
-	@apply top-full left-1/2 -translate-x-1/2 mt-2;
+  @apply top-full left-1/2 -translate-x-1/2 mt-2;
 }
 
 .bottom_left {
-	@apply top-full  mt-2;
+  @apply top-full  mt-2;
 }
