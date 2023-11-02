@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ReactNode } from 'react';
+import React, { InputHTMLAttributes, memo, ReactNode } from 'react';
 import { Transition } from '@headlessui/react';
 import cls from './Checkbox.module.scss';
 import { classNames } from '~/shared/lib/classNames';
@@ -7,10 +7,9 @@ interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 	text?: ReactNode;
 	checked?: boolean;
-	onChange?: () => void;
 }
 
-export const Checkbox = (props: CheckboxProps) => {
+export const Checkbox = memo((props: CheckboxProps) => {
 	const {
 		className,
 		children,
@@ -65,4 +64,4 @@ export const Checkbox = (props: CheckboxProps) => {
 			</label>
 		</div>
 	);
-};
+});

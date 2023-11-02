@@ -1,12 +1,11 @@
 .btn {
 	cursor: pointer;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 	float: left;
 	-webkit-user-select: none;
 	user-select: none;
-	&:not(:first-child) {
-		margin-left: 20px;
-	}
+
 	@media screen and (max-width: 480px) {
 		display: block;
 		float: none;
@@ -16,7 +15,6 @@
 		}
 	}
 	svg {
-		margin-right: 10px;
 		fill: none;
 		vertical-align: middle;
 		circle {

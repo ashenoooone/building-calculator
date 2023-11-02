@@ -1,9 +1,11 @@
 import React, { InputHTMLAttributes, useMemo } from 'react';
 import cls from './Product.module.scss';
+import { Radio } from '~/shared/ui/Radio';
 import { Card } from '~/shared/ui/Card';
-import InfoSvg from '~/shared/assets/info.svg';
-import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
 import { Hint } from '~/shared/ui/Hint';
+import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
+import InfoSvg from '~/shared/assets/info.svg';
+import { Checkbox } from '~/shared/ui/Checkbox';
 
 type ProductPropsType = 'checkbox' | 'radio';
 
@@ -27,28 +29,29 @@ export const Product = (props: ProductProps) => {
 		title,
 		checked,
 		type = 'checkbox',
+		onChange,
 		...rest
 	} = props;
 
 	const controller = useMemo(() => {
 		if (type === 'checkbox') {
 			return (
-				<input
+				<Checkbox
+					onChange={onChange}
 					checked={checked}
 					className={cls.controller}
-					type='checkbox'
 				/>
 			);
 		}
 
 		return (
-			<input
+			<Radio
+				onChange={onChange}
 				checked={checked}
 				className={cls.controller}
-				type='radio'
 			/>
 		);
-	}, [checked, type]);
+	}, [checked, onChange, type]);
 
 	return (
 		<Card

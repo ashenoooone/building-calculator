@@ -3,11 +3,9 @@ import { classNames } from '~/shared/lib/classNames';
 import cls from './Radio.module.scss';
 
 interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
-	text: string;
-	name: string;
+	text?: string;
 	checked: boolean;
-	value: string;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	value?: string;
 	className?: string;
 }
 
