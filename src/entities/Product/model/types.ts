@@ -1,2 +1,1 @@
-export interface ProductSchema {
-}
+export interface ProductSchema {}

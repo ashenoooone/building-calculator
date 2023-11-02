@@ -1,48 +1,47 @@
 .Hint {
-  @apply w-max relative;
+	@apply w-max relative;
 }
 
 .hint {
-  @apply absolute bg-primary bg-opacity-80 text-center rounded-lg text-inverted-primary p-2;
+	@apply absolute bg-primary bg-opacity-80 text-center rounded-lg text-inverted-primary p-2;
 }
 
 .top_left {
-  @apply bottom-full left-0 mb-2;
+	@apply bottom-full left-0 mb-2;
 }
 
 .top_right {
-  @apply bottom-full right-0 mb-2;
+	@apply bottom-full right-0 mb-2;
 }
 
 .top_center {
-  @apply bottom-full left-1/2 mb-2 -translate-x-1/2;
+	@apply bottom-full left-1/2 mb-2 -translate-x-1/2;
 }
 
 .right_top {
-  @apply top-0 left-full ml-2;
+	@apply top-0 left-full ml-2;
 }
 
 .right_bottom {
-  @apply bottom-0 left-full ml-2;
+	@apply bottom-0 left-full ml-2;
 }
 
 .left_top {
-  @apply top-0 right-full mr-2;
+	@apply top-0 right-full mr-2;
 }
 
 .left_bottom {
-  @apply bottom-0 right-full mr-2;
+	@apply bottom-0 right-full mr-2;
 }
 
 .bottom_right {
-  @apply top-full right-0 mt-2;
+	@apply top-full right-0 mt-2;
 }
 
 .bottom_center {
-  @apply top-full left-1/2 -translate-x-1/2 mt-2;
+	@apply top-full left-1/2 -translate-x-1/2 mt-2;
 }
 
 .bottom_left {
-  @apply top-full  mt-2;
+	@apply top-full  mt-2;
 }
-

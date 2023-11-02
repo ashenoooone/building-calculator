@@ -1,22 +1,22 @@
 .Product {
-  @apply flex items-center;
+	@apply flex items-center;
 }
 
 .icon {
-  @apply w-6 ml-2;
-  &:hover {
-    @apply stroke-primary cursor-pointer;
-  }
+	@apply w-6 ml-2;
+	&:hover {
+		@apply stroke-primary cursor-pointer;
+	}
 }
 
 .image {
-  @apply w-7 ml-2;
+	@apply w-7 ml-2;
 }
 
 .price {
-  @apply ml-auto font-bold text-green-700;
+	@apply ml-auto font-bold text-green-700;
 }
 
 .controller {
-  @apply mr-4;
+	@apply mr-4;
 }
