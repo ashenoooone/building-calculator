@@ -25,6 +25,7 @@ interface SelectProps extends HTMLSelectPropsOmitted {
 	value?: valueType;
 	selectOptions?: SelectOption[];
 	onChange?: (value: valueType) => void;
+	label?: string;
 }
 
 const DirectionMapper: Record<Directions, string> = {
@@ -43,6 +44,7 @@ const DirectionMapper: Record<Directions, string> = {
 export const Select = memo((props: SelectProps) => {
 	const {
 		className = '',
+		label,
 		placeholder = '',
 		direction = 'bottom left',
 		selectOptions,
@@ -59,6 +61,7 @@ export const Select = memo((props: SelectProps) => {
 		>
 			<div className={cls.trigger_container}>
 				<Listbox.Button className={cls.trigger}>
+					{label && <span className={cls.label}>{label}</span>}
 					{placeholder && !value && (
 						<span className='text-gray-400'>{placeholder}</span>
 					)}

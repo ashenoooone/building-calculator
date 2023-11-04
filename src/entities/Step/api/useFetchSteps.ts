@@ -5,6 +5,7 @@ import { IStep } from '~/entities/Step/model/types';
 export const useFetchSteps = () =>
 	useQuery({
 		queryKey: 'steps',
+		refetchInterval: false,
 		queryFn: async () => {
 			const response = await $api.get<IStep[]>('/steps');
 			return response.data;

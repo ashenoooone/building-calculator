@@ -5,9 +5,11 @@ import { CalculatePrices } from '~/features/calculatePrices';
 
 export function App() {
 	return (
-		<Page>
+		<div>
 			<Navbar />
-			<CalculatePrices />
-		</Page>
+			<Page className='px-10'>
+				<CalculatePrices />
+			</Page>
+		</div>
 	);
 }

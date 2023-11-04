@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cls from './Navbar.module.scss';
 import { Navlink } from '~/shared/ui/Navlink';
 import { classNames } from '~/shared/lib/classNames';
@@ -11,19 +11,7 @@ interface NavbarProps {
 	className?: string;
 }
 
-const Navlist = [
-	'Подготовительные работы',
-	'Фундамент',
-	'Окна/двери',
-	'Стены',
-	'Крыша',
-	'Фасад',
-	'Отопление',
-	'Отделка',
-	'Кондиционирование'
-];
-
-export const Navbar = (props: NavbarProps) => {
+export const Navbar = memo((props: NavbarProps) => {
 	const { className = '' } = props;
 	const { data, isLoading, isError } = useFetchSteps();
 
@@ -61,4 +49,4 @@ export const Navbar = (props: NavbarProps) => {
 			</HStack>
 		</div>
 	);
-};
+});

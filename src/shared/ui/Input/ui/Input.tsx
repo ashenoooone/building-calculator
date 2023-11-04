@@ -14,17 +14,25 @@ interface InputProps extends HTMLInputAttributes {
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 	(props, ref) => {
-		const { className = '', type = 'text', label, ...rest } = props;
+		const {
+			className = '',
+			type = 'text',
+			placeholder = ' ',
+			label,
+			...rest
+		} = props;
+
 		return (
 			// eslint-disable-next-line jsx-a11y/label-has-associated-control
 			<label className={classNames(cls.Input, {}, [className])}>
-				{label && <span className={cls.label}>label</span>}
 				<input
+					placeholder={placeholder}
 					className={cls.input}
 					ref={ref}
 					type={type}
 					{...rest}
 				/>
+				<span className={cls.label}>{label}</span>
 			</label>
 		);
 	}

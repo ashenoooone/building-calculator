@@ -4,13 +4,22 @@ import cls from './CalculatePrices.module.scss';
 import HouseImg from '~/shared/assets/house.png';
 import { Card } from '~/shared/ui/Card';
 import { Text } from '~/shared/ui/Text';
-import { Range } from '~/shared/ui/Range';
 import { Select } from '~/shared/ui/Select';
 import { Button } from '~/shared/ui/Button';
 import { Input } from '~/shared/ui/Input';
+import { CalculatePricesSchema } from '~/features/calculatePrices/model/types';
 
 export const CalculatePrices = () => {
-	const { control, handleSubmit } = useForm();
+	const {
+		control,
+		formState: { errors },
+		handleSubmit
+	} = useForm<CalculatePricesSchema>({
+		shouldUseNativeValidation: true,
+		defaultValues: {
+			floor: '1 этаж'
+		}
+	});
 
 	const onSubmit = useCallback((values: any) => {
 		console.log(values);
@@ -35,25 +44,26 @@ export const CalculatePrices = () => {
 					onSubmit={handleSubmit(onSubmit)}
 					className={cls.form}
 				>
-					<Range title='Площадь дома' />
 					<Controller
+						control={control}
+						name='area'
 						render={({ field }) => (
 							<Input
+								label='Площадь дома'
 								type='number'
-								min={0}
-								max={100}
 								className='w-full'
-								placeholder='Площадь дома'
 								{...field}
 							/>
 						)}
-						name='area'
-						control={control}
+						rules={{
+							min: { value: 10, message: 'Минимальная плошадь - 10' },
+							max: { value: 1000, message: 'Максимальная площадь - 1000' }
+						}}
 					/>
 					<Controller
 						render={({ field }) => (
 							<Select
-								className='w-full'
+								label='Количество этажей'
 								placeholder='Количество этажей'
 								selectOptions={[
 									{
@@ -71,7 +81,6 @@ export const CalculatePrices = () => {
 						name='floor'
 						control={control}
 					/>
-
 					<Button type='submit'>Рассчитать</Button>
 				</form>
 			</Card>
