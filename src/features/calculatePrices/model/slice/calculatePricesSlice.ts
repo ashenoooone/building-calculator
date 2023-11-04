@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-};
+const initialState = {};
 
 export const calculatePricesSlice = createSlice({
-  name: 'calculatePricesSlice',
-  initialState,
-  reducers: {
-  },
+	name: 'calculatePricesSlice',
+	initialState,
+	reducers: {}
 });
 
 export const { actions: calculatePricesSliceActions } = calculatePricesSlice;

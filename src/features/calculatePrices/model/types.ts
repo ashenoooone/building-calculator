@@ -1,2 +1,1 @@
-export interface CalculatePricesSchema {
-}
+export interface CalculatePricesSchema {}
