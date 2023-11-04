@@ -1,0 +1,11 @@
+.CalculatePrices {
+  @apply flex items-center justify-between;
+}
+
+.form {
+  @apply flex flex-col gap-md;
+}
+
+.image {
+  @apply max-w-[500px]
+}

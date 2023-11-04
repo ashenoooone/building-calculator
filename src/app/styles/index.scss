@@ -1,9 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import 'normalize/normalize.css';
 @import 'variables/variables';
 @import 'font/stylesheet.css';
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
 body {
 	background: var(--bg-color);

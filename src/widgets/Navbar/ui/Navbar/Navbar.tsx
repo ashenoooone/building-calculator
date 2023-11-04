@@ -5,6 +5,7 @@ import { classNames } from '~/shared/lib/classNames';
 import { HStack } from '~/shared/ui/Stack';
 import HomeSvg from '~/shared/assets/home.svg';
 import CalcSvg from '~/shared/assets/calc.svg';
+import { useFetchSteps } from '~/entities/Step';
 
 interface NavbarProps {
 	className?: string;
@@ -24,6 +25,10 @@ const Navlist = [
 
 export const Navbar = (props: NavbarProps) => {
 	const { className = '' } = props;
+	const { data, isLoading, isError } = useFetchSteps();
+
+	if (isLoading || isError) return null;
+
 	return (
 		<div className={classNames(cls.Navbar, {}, [className])}>
 			<h2 className={cls.title}>Этапы:</h2>
@@ -37,12 +42,13 @@ export const Navbar = (props: NavbarProps) => {
 					text='Характеристики дома'
 				/>
 				<hr className={cls.line} />
-				{Navlist.map((item, idx) => {
+				{data.map((item, idx) => {
 					return (
 						<>
 							<Navlink
+								key={`navlink${idx}`}
 								title={idx + 1}
-								text={item}
+								text={item.title}
 							/>
 							<hr className={cls.line} />
 						</>

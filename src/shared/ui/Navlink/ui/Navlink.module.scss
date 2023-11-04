@@ -6,6 +6,7 @@
 	position: relative;
 	opacity: 1;
 	font: var(--font-xl);
+	background: none;
 
 	&.active {
 		.title {

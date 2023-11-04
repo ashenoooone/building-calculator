@@ -1,7 +1,15 @@
 module.exports = {
 	content: ['./src/**/*.{js,jsx,ts,tsx}'],
+	corePlugins: {
+		preflight: false
+	},
 	theme: {
 		extend: {
+			gap: {
+				sm: '0.5rem',
+				md: '1.5rem',
+				xl: '3rem'
+			},
 			colors: {
 				'primary': 'rgb(189, 141, 85, 1)',
 				'inverted-primary': 'white',

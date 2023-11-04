@@ -1,1 +1,1 @@
-export { CardProps, Card } from './ui/Card';
+export { Card } from './ui/Card';

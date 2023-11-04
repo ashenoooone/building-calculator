@@ -81,7 +81,7 @@ export const Select = memo((props: SelectProps) => {
 							DirectionMapper[direction]
 						])}
 					>
-						{selectOptions.map((option) => (
+						{selectOptions?.map((option) => (
 							<Listbox.Option
 								key={`${option.value}${option.content}`}
 								className={({ active, selected }) =>

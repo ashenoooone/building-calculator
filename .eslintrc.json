@@ -49,6 +49,8 @@
 		"react/self-closing-comp": [0],
 		"import/no-unresolved": [0],
 		"quote-props": [0],
+		"no-shadow": [0],
+		"react/no-array-index-key": [1],
 		"react/jsx-curly-newline": [0],
 		"react/button-has-type": [0],
 		"function-paren-newline": [0],
@@ -59,7 +61,13 @@
 			{ "extensions": [".js", ".jsx", "tsx", "ts"] }
 		],
 		"@typescript-eslint/no-unused-vars": [1],
+		"no-underscore-dangle": [0],
 		"@typescript-eslint/no-var-requires": [1],
 		"@typescript-eslint/no-explicit-any": [1]
+	},
+	"globals": {
+		"__IS_DEV__": true,
+		"__API__": true,
+		"__PROJECT__": true
 	}
 }

@@ -1,13 +1,11 @@
 .Select {
-  @apply relative w-max transition ease-in-out duration-[var(--transition-duration-s)];
+  @apply border-primary border-2 rounded-lg relative w-max transition
+  ease-in-out duration-[var(--transition-duration-s)];
 
-  &:hover {
-    @apply opacity-80;
-  }
 }
 
 .trigger_container {
-  @apply relative mt-1;
+  @apply relative;
 }
 
 .icon {
@@ -25,13 +23,13 @@
   focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2
   focus-visible:ring-offset-orange-300 sm:text-sm;
   &.active {
-    @apply outline outline-primary/50 focus:outline outline-[3px]
+    @apply outline outline-primary/50 focus:outline outline-[3px];
   }
 }
 
 .options {
   @apply absolute mt-1 overflow-auto rounded-md
-  bg-white py-1 text-base shadow-lg
+  bg-white text-base shadow-lg border-2 border-primary w-full
   ring-1 ring-black/5 focus:outline-none sm:text-sm;
 }
 
@@ -39,12 +37,12 @@
   @apply block truncate;
 
   &_active {
-    @apply text-primary
+    @apply text-primary;
   }
 }
 
 .option {
-  @apply relative cursor-default select-none py-2 px-4 ;
+  @apply relative cursor-default select-none py-2 px-4 text-center;
 
   &_active {
     @apply bg-amber-100 text-amber-900;
@@ -66,12 +64,8 @@
     @apply rounded-b-lg;
   }
 
-  &:hover {
-    @apply opacity-80;
-  }
-
   &.option_active {
-    @apply opacity-80;
+    @apply opacity-100;
   }
 }
 

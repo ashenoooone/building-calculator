@@ -18,6 +18,10 @@ export const buildWebpackPlugins = (
 			__API__: JSON.stringify(options.apiUrl)
 		}),
 		new webpack.ProgressPlugin(),
+		new webpack.DefinePlugin({
+			__IS_DEV__: JSON.stringify(options.mode === 'development'),
+			__API__: JSON.stringify(options.apiUrl)
+		}),
 		new ForkTsCheckerWebpackPlugin({
 			typescript: {
 				diagnosticOptions: {
