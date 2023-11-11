@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-};
+const initialState = {};
 
 export const StepsMapperSlice = createSlice({
-  name: 'StepsMapperSlice',
-  initialState,
-  reducers: {
-  },
+	name: 'StepsMapperSlice',
+	initialState,
+	reducers: {}
 });
 
 export const { actions: StepsMapperSliceActions } = StepsMapperSlice;
