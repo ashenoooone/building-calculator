@@ -1,30 +1,21 @@
-import React, {
-	CSSProperties,
-	memo,
-	ReactNode,
-	useCallback,
-	useMemo,
-	Fragment,
-	useState
-} from 'react';
+import React, { Fragment, ReactNode, useCallback } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
-import { Navlink } from '~/shared/ui/Navlink';
 import { classNames } from '~/shared/lib/classNames';
 import cls from './PopUp.module.scss';
 
 interface PopUpProps {
-	statusOpen: boolean;
-	closeFunc: () => void;
+	statusOpen?: boolean;
+	closeFunc?: () => void;
 	children: ReactNode;
 }
 
 export const PopUp = (props: PopUpProps) => {
-	const { statusOpen, closeFunc, children } = props;
+	const { statusOpen = false, closeFunc, children } = props;
 
-	const closePopUp = () => {
-		closeFunc();
-	};
+	const closePopUp = useCallback(() => {
+		closeFunc?.();
+	}, [closeFunc]);
 
 	// попап шириной 100% от родительского компонента
 	return (
@@ -71,7 +62,7 @@ export const PopUp = (props: PopUpProps) => {
 										viewBox='0 0 24 24'
 										strokeWidth={3}
 										stroke='currentColor'
-										className='w-8 h-8'
+										className='w-8 h-8 cursor-pointer hover:opacity-80'
 									>
 										<path
 											strokeLinecap='round'

@@ -1,4 +1,4 @@
 export interface CalculatePricesSchema {
 	area: number;
-	floor: string;
+	floor: '1 этаж' | '2 этажа';
 }

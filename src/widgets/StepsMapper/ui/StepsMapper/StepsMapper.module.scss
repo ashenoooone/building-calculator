@@ -1,0 +1,11 @@
+.StepsMapper {
+  @apply flex items-center justify-between;
+}
+
+.image {
+  @apply max-w-[500px];
+}
+
+.card {
+  @apply min-w-[300px];
+}

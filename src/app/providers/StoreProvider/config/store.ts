@@ -1,11 +1,29 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { StateSchema } from '~/app/providers/StoreProvider';
+import { StateSchema, ThunkExtraArg } from './StateSchema';
+import { calculatePricesSliceReducer } from '~/features/calculatePrices';
+import { $api } from '~/shared/api/api';
+import { rtkApi } from '~/shared/api/rtkApi';
+import { stepsReducer } from '~/entities/Step';
 
 export function createReduxStore(initialState?: StateSchema) {
+	const extraArg: ThunkExtraArg = {
+		api: $api
+	};
+
 	const store = configureStore({
-		reducer: combineReducers<StateSchema>({}),
+		reducer: combineReducers<StateSchema>({
+			api: rtkApi.reducer,
+			stepsSlice: stepsReducer,
+			calculatePrices: calculatePricesSliceReducer
+		}),
 		devTools: __IS_DEV__,
-		preloadedState: initialState
+		preloadedState: initialState,
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware({
+				thunk: {
+					extraArgument: extraArg
+				}
+			}).concat(rtkApi.middleware)
 	});
 
 	return store;

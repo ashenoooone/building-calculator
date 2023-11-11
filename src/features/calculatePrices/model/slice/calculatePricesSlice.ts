@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { CalculatePricesSchema } from '../types';
 
-const initialState = {};
+const initialState: CalculatePricesSchema = {
+	area: 0,
+	floor: '1 этаж'
+};
 
 export const calculatePricesSlice = createSlice({
 	name: 'calculatePricesSlice',

@@ -1,2 +1,5 @@
 export { Step } from './ui/Step/Step';
-export { useFetchSteps } from './api/useFetchSteps';
+export { stepsReducer, stepsActions } from './model/slice/stepsSlice';
+export type { StepsSchema, IStep } from './model/types';
+export * from './model/selectors/stepsSliceSelectors';
+export { fetchSteps } from './api/fetchSteps';

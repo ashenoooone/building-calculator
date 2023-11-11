@@ -8,8 +8,11 @@ import { Select } from '~/shared/ui/Select';
 import { Button } from '~/shared/ui/Button';
 import { Input } from '~/shared/ui/Input';
 import { CalculatePricesSchema } from '~/features/calculatePrices/model/types';
+import { useAppDispatch } from '~/shared/lib/useAppDispatch';
+import { stepsActions } from '~/entities/Step';
 
 export const CalculatePrices = () => {
+	const dispatch = useAppDispatch();
 	const {
 		control,
 		formState: { errors },
@@ -21,9 +24,12 @@ export const CalculatePrices = () => {
 		}
 	});
 
-	const onSubmit = useCallback((values: any) => {
-		console.log(values);
-	}, []);
+	const onSubmit = useCallback(
+		(values: any) => {
+			dispatch(stepsActions.setCurrentStep(1));
+		},
+		[dispatch]
+	);
 
 	return (
 		<div className={cls.CalculatePrices}>
@@ -56,6 +62,10 @@ export const CalculatePrices = () => {
 							/>
 						)}
 						rules={{
+							required: {
+								value: true,
+								message: 'Поле обязательно для заполнения'
+							},
 							min: { value: 10, message: 'Минимальная плошадь - 10' },
 							max: { value: 1000, message: 'Максимальная площадь - 1000' }
 						}}

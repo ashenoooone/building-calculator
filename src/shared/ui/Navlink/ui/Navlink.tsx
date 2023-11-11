@@ -10,7 +10,7 @@ import { classNames } from '~/shared/lib/classNames';
 import cls from './Navlink.module.scss';
 import { useHover } from '~/shared/lib/useHover';
 
-type NavlinkStatusType = 'active' | 'visited' | 'blocked';
+export type NavlinkStatusType = 'active' | 'visited' | 'blocked';
 
 interface NavlinkProps {
 	className?: string;
