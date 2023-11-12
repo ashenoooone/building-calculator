@@ -64,14 +64,18 @@ export const Navlink = memo((props: NavlinkProps) => {
 						leave='transition-opacity duration-200'
 						leaveFrom='opacity-100'
 						leaveTo='opacity-0'
-						className={classNames(cls.text, {}, [])}
+						className={classNames(
+							cls.text,
+							{ [cls.text_inactive]: status === 'blocked' },
+							[]
+						)}
 					>
 						<span>{text}</span>
 					</Transition>
 				)}
 			</>
 		);
-	}, [isHover, style, text, title]);
+	}, [isHover, status, style, text, title]);
 
 	return (
 		<button

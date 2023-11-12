@@ -14,24 +14,11 @@ import {
 	stepsActions
 } from '~/entities/Step';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
+import { getResultSteps } from '~/entities/Result';
 
 interface NavbarProps {
 	className?: string;
 }
-
-const getNavlinkStatus = (
-	idx: number,
-	currentStep: number
-): NavlinkStatusType => {
-	if (idx === currentStep) {
-		return 'active';
-	}
-	if (idx < currentStep) {
-		return 'visited';
-	}
-
-	return 'blocked';
-};
 
 export const Navbar = memo((props: NavbarProps) => {
 	const { className = '' } = props;
@@ -40,6 +27,19 @@ export const Navbar = memo((props: NavbarProps) => {
 	const steps = useSelector(getSteps);
 	const currentStep = useSelector(getCurrentStep);
 	const dispatch = useAppDispatch();
+	const stepsResults = useSelector(getResultSteps);
+
+	const getNavlinkStatus = (idx: number): NavlinkStatusType => {
+		if (currentStep === idx) {
+			return 'active';
+		}
+		const isVisited =
+			stepsResults.find((i) => i.order === idx)?.values.length > 0;
+		if (isVisited) {
+			return 'visited';
+		}
+		return 'blocked';
+	};
 
 	const onNavlinkClick = useCallback(
 		(step: number) => {
@@ -65,7 +65,7 @@ export const Navbar = memo((props: NavbarProps) => {
 					onClick={onNavlinkClick(0)}
 					title={<HomeSvg />}
 					text='Характеристики дома'
-					status={getNavlinkStatus(0, currentStep)}
+					status='visited'
 				/>
 				<hr className={cls.line} />
 				{steps.map((item, idx) => {
@@ -74,7 +74,7 @@ export const Navbar = memo((props: NavbarProps) => {
 							<Navlink
 								key={`navlink${idx}`}
 								title={idx + 1}
-								status={getNavlinkStatus(idx + 1, currentStep)}
+								status={getNavlinkStatus(idx + 1)}
 								text={item.title}
 								onClick={onNavlinkClick(idx + 1)}
 							/>
@@ -83,7 +83,7 @@ export const Navbar = memo((props: NavbarProps) => {
 					);
 				})}
 				<Navlink
-					status={getNavlinkStatus(steps.length + 1, currentStep)}
+					status={getNavlinkStatus(steps.length + 1)}
 					title={<CalcSvg />}
 					text='Результат'
 				/>

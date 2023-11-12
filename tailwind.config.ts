@@ -16,7 +16,8 @@ module.exports = {
 				'bg-color': 'rgb(217, 217, 217, 22)',
 				'bg-color-inverted': '#919198',
 				'input-text-color': '#787F8D',
-				'secondary-color': 'rgb(89, 90, 100, 0.6)',
+				// todo секондари колор прозрачный, подобрать непрозрачный вариант
+				'secondary-color': '#595a64',
 				'inverted-primary-color-80': 'rgba(255, 255, 255, 0.5)'
 			}
 		}

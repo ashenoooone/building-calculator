@@ -16,15 +16,12 @@
 	}
 
 	&.visited {
-		opacity: 0.75;
-		.title {
+		.title{
 			background: var(--primary-color);
 		}
 	}
 
 	&.blocked {
-		pointer-events: none;
-
 		.title {
 			background: var(--secondary-color);
 		}
@@ -56,4 +53,8 @@
 	border-radius: 15px;
 	padding: 5px 10px;
 	z-index: 10;
+
+	&_inactive {
+		@apply bg-secondary-color bg-opacity-100
+	}
 }
