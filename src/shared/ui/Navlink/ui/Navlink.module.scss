@@ -16,7 +16,7 @@
 	}
 
 	&.visited {
-		.title{
+		.title {
 			background: var(--primary-color);
 		}
 	}
@@ -55,6 +55,6 @@
 	z-index: 10;
 
 	&_inactive {
-		@apply bg-secondary-color bg-opacity-100
+		@apply bg-secondary-color bg-opacity-100;
 	}
 }
