@@ -4,14 +4,15 @@ import { Dialog, Transition } from '@headlessui/react';
 import { classNames } from '~/shared/lib/classNames';
 import cls from './PopUp.module.scss';
 
-interface PopUpProps {
+export interface PopUpProps {
 	statusOpen?: boolean;
 	closeFunc?: () => void;
-	children: ReactNode;
+	children?: ReactNode;
+	className?: string;
 }
 
 export const PopUp = (props: PopUpProps) => {
-	const { statusOpen = false, closeFunc, children } = props;
+	const { statusOpen = false, closeFunc, children, className = '' } = props;
 
 	const closePopUp = useCallback(() => {
 		closeFunc?.();
@@ -53,24 +54,22 @@ export const PopUp = (props: PopUpProps) => {
 							leaveTo='opacity-0 scale-95'
 						>
 							<Dialog.Panel className={classNames(cls.PopUp, {})}>
-								<div className={classNames(cls.ContainerCloseButton, {})}>
-									<svg
-										onClick={closePopUp}
-										xmlns='http://www.w3.org/2000/svg'
-										color='white'
-										fill='none'
-										viewBox='0 0 24 24'
-										strokeWidth={3}
-										stroke='currentColor'
-										className='w-8 h-8 cursor-pointer hover:opacity-80'
-									>
-										<path
-											strokeLinecap='round'
-											strokeLinejoin='round'
-											d='M6 18L18 6M6 6l12 12'
-										/>
-									</svg>
-								</div>
+								<svg
+									onClick={closePopUp}
+									xmlns='http://www.w3.org/2000/svg'
+									color='white'
+									fill='none'
+									viewBox='0 0 24 24'
+									strokeWidth={3}
+									stroke='currentColor'
+									className={classNames(cls.close_btn)}
+								>
+									<path
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										d='M6 18L18 6M6 6l12 12'
+									/>
+								</svg>
 								<div className='bg-none'>{children}</div>
 							</Dialog.Panel>
 						</Transition.Child>

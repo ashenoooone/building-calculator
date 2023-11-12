@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './Navbar.module.scss';
 import { Navlink, NavlinkStatusType } from '~/shared/ui/Navlink';
@@ -7,7 +7,6 @@ import { HStack } from '~/shared/ui/Stack';
 import HomeSvg from '~/shared/assets/home.svg';
 import CalcSvg from '~/shared/assets/calc.svg';
 import {
-	fetchSteps,
 	getCurrentStep,
 	getSteps,
 	getStepsError,
@@ -42,10 +41,6 @@ export const Navbar = memo((props: NavbarProps) => {
 	const currentStep = useSelector(getCurrentStep);
 	const dispatch = useAppDispatch();
 
-	useEffect(() => {
-		dispatch(fetchSteps());
-	}, [dispatch]);
-
 	const onNavlinkClick = useCallback(
 		(step: number) => {
 			return () => {
@@ -61,7 +56,6 @@ export const Navbar = memo((props: NavbarProps) => {
 
 	return (
 		<div className={classNames(cls.Navbar, {}, [className])}>
-			<h2 className={cls.title}>Этапы:</h2>
 			<HStack
 				gap='16'
 				justify='between'
@@ -71,6 +65,7 @@ export const Navbar = memo((props: NavbarProps) => {
 					onClick={onNavlinkClick(0)}
 					title={<HomeSvg />}
 					text='Характеристики дома'
+					status={getNavlinkStatus(0, currentStep)}
 				/>
 				<hr className={cls.line} />
 				{steps.map((item, idx) => {

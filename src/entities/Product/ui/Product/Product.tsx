@@ -14,7 +14,7 @@ interface ProductProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 	title: string;
 	description: string;
-	img?: string;
+	img: string;
 	price: string;
 	checked?: boolean;
 	type?: ProductPropsType;
@@ -69,7 +69,7 @@ export const Product = (props: ProductProps) => {
 			/>
 			<img
 				className={cls.image}
-				src={`data:image/svg+xml;base64,${img}`}
+				src={img}
 				alt={title}
 			/>
 			<p className={cls.price}>{convertToRubbleFormat(price)}</p>

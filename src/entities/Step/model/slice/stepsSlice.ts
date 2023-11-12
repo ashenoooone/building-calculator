@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StepsSchema } from '../types';
-import { fetchSteps } from '../../api/fetchSteps';
+import { CURRENT_STEP_LOCAL_STORAGE_KEY } from '~/shared/consts';
+import { stepsApi } from '~/entities/Step/api/stepsApi';
 
 const initialState: StepsSchema = {
 	data: {
@@ -17,22 +18,37 @@ export const stepsSlice = createSlice({
 	reducers: {
 		setCurrentStep: (state, action: PayloadAction<number>) => {
 			state.data.currentStep = action.payload;
+			localStorage.setItem(
+				CURRENT_STEP_LOCAL_STORAGE_KEY,
+				JSON.stringify(action.payload)
+			);
 		}
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchSteps.rejected, (state, action) => {
-			state.isLoading = false;
-			state.error = action.payload;
-		});
-		builder.addCase(fetchSteps.pending, (state, action) => {
-			state.isLoading = true;
-			state.error = null;
-		});
-		builder.addCase(fetchSteps.fulfilled, (state, action) => {
-			state.data.steps = action.payload;
-			state.isLoading = false;
-			state.error = null;
-		});
+		builder.addMatcher(
+			stepsApi.endpoints.getSteps.matchRejected,
+			(state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			}
+		);
+		builder.addMatcher(
+			stepsApi.endpoints.getSteps.matchPending,
+			(state, action) => {
+				state.isLoading = true;
+				state.error = null;
+			}
+		);
+		builder.addMatcher(
+			stepsApi.endpoints.getSteps.matchFulfilled,
+			(state, action) => {
+				state.data.steps = action.payload;
+				state.isLoading = false;
+				state.error = null;
+				state.data.currentStep =
+					JSON.parse(localStorage.getItem(CURRENT_STEP_LOCAL_STORAGE_KEY)) ?? 0;
+			}
+		);
 	}
 });
 
