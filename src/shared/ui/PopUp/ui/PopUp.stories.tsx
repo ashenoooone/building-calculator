@@ -19,6 +19,12 @@ type Story = StoryObj<typeof PopUp>;
 
 export const Default: Story = {
 	args: {
-		statusOpen: true
+		statusOpen: true,
+		children: (
+			<div>
+				<div>проверка</div>
+				<div>проверка</div>
+			</div>
+		)
 	}
 };

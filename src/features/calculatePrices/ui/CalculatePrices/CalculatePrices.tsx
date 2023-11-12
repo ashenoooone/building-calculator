@@ -66,8 +66,14 @@ export const CalculatePrices = () => {
 								value: true,
 								message: 'Поле обязательно для заполнения'
 							},
-							min: { value: 10, message: 'Минимальная плошадь - 10' },
-							max: { value: 1000, message: 'Максимальная площадь - 1000' }
+							min: {
+								value: 10,
+								message: 'Минимальная плошадь - 10'
+							},
+							max: {
+								value: 1000,
+								message: 'Максимальная площадь - 1000'
+							}
 						}}
 					/>
 					<Controller
