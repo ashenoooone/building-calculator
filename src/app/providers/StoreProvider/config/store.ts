@@ -4,6 +4,7 @@ import { calculatePricesSliceReducer } from '~/features/calculatePrices';
 import { $api } from '~/shared/api/api';
 import { rtkApi } from '~/shared/api/rtkApi';
 import { stepsReducer } from '~/entities/Step';
+import { ResultSliceReducer } from '~/entities/Result';
 
 export function createReduxStore(initialState?: StateSchema) {
 	const extraArg: ThunkExtraArg = {
@@ -14,7 +15,8 @@ export function createReduxStore(initialState?: StateSchema) {
 		reducer: combineReducers<StateSchema>({
 			api: rtkApi.reducer,
 			stepsSlice: stepsReducer,
-			calculatePrices: calculatePricesSliceReducer
+			calculatePrices: calculatePricesSliceReducer,
+			resultSlice: ResultSliceReducer
 		}),
 		devTools: __IS_DEV__,
 		preloadedState: initialState,

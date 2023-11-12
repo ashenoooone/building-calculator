@@ -1,11 +1,21 @@
-import React, { FC, ReactNode, useCallback } from 'react';
+import React, {
+	ChangeEvent,
+	FC,
+	ReactNode,
+	useCallback,
+	useEffect
+} from 'react';
+import { useSelector } from 'react-redux';
 import cls from './StepModal.module.scss';
-import { IStep } from '~/entities/Step';
+import { getCurrentStep, IStep } from '~/entities/Step';
 import { PopUp, PopUpProps } from '~/shared/ui/PopUp';
 import { Navbar } from '~/widgets/Navbar';
 import { classNames } from '~/shared/lib/classNames';
 import { Product } from '~/entities/Product';
 import { IComponent } from '~/entities/Step/model/types';
+import { useAppDispatch } from '~/shared/lib/useAppDispatch';
+import { getComponentsByStep, ResultSliceActions } from '~/entities/Result';
+import { checked } from '~/shared/ui/Radio/ui/Radio.stories';
 
 interface StepModalProps extends PopUpProps {
 	className?: string;
@@ -14,18 +24,56 @@ interface StepModalProps extends PopUpProps {
 
 export const StepModal = (props: StepModalProps) => {
 	const { className = '', step, ...popupProps } = props;
+	const dispatch = useAppDispatch();
+	const components = useSelector(getComponentsByStep);
+	const currentStep = useSelector(getCurrentStep);
 
-	const renderRadioGroup = useCallback((p: IComponent) => {
-		return (
-			<Product
-				type='radio'
-				title={p.title}
-				description={p.title}
-				img={p.imageUrl}
-				price={p.price}
-			/>
+	const ifComponentChecked = (componentId: number): boolean => {
+		return components?.values.some((i) => i.id === componentId);
+	};
+
+	const generateProductOnChangeHandler = useCallback(
+		(c: IComponent) => {
+			return (event: ChangeEvent<HTMLInputElement>) => {
+				if (event.target.checked) {
+					dispatch(
+						ResultSliceActions.addComponentToStep({
+							order: currentStep,
+							component: c
+						})
+					);
+				}
+			};
+		},
+		[currentStep, dispatch]
+	);
+
+	useEffect(() => {
+		dispatch(
+			ResultSliceActions.addStep({
+				order: currentStep,
+				isMultiple: step.multipleSelect,
+				values: []
+			})
 		);
-	}, []);
+	}, [currentStep, dispatch, step.multipleSelect]);
+
+	const renderRadioGroup = useCallback(
+		(p: IComponent) => {
+			return (
+				<Product
+					checked={ifComponentChecked(p.id)}
+					onChange={generateProductOnChangeHandler(p)}
+					type='radio'
+					title={p.title}
+					description={p.title}
+					img={p.imageUrl}
+					price={p.price}
+				/>
+			);
+		},
+		[generateProductOnChangeHandler, ifComponentChecked]
+	);
 
 	const renderCheckboxGroup = useCallback((p: IComponent) => {
 		return (
