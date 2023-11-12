@@ -1,20 +1,19 @@
 .StepModal {
-
 }
 
 .title {
-  font: var(--font-xxl);
-  @apply text-primary;
+	font: var(--font-xxl);
+	@apply text-primary;
 }
 
 .description {
-  @apply text-input-text-color mt-1 mb-4
+	@apply text-input-text-color mt-1 mb-4;
 }
 
 .header {
-  @apply py-10 bg-black bg-opacity-60 px-7
+	@apply py-10 bg-black bg-opacity-60 px-7;
 }
 
 .content {
-  @apply flex gap-sm pt-10 px-4 w-full;
+	@apply flex gap-sm pt-10 px-4 w-full;
 }
