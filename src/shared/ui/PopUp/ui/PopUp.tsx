@@ -42,7 +42,7 @@ export const PopUp = (props: PopUpProps) => {
 					<div className='fixed inset-0 bg-black/25' />
 				</Transition.Child>
 
-				<div className='fixed inset-0 overflow-y-auto'>
+				<div className='fixed inset-0 min-h-full overflow-y-auto'>
 					<div className='flex flex-col min-h-full min-w-full'>
 						<Transition.Child
 							as={Fragment}
@@ -70,7 +70,7 @@ export const PopUp = (props: PopUpProps) => {
 										d='M6 18L18 6M6 6l12 12'
 									/>
 								</svg>
-								<div className='bg-none'>{children}</div>
+								<div className={className}>{children}</div>
 							</Dialog.Panel>
 						</Transition.Child>
 					</div>

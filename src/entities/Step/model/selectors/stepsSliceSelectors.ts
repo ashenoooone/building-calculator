@@ -19,6 +19,11 @@ export const getStepsIsLoading = createSelector(
 
 export const getStepsError = createSelector(getStepsSlice, (gss) => gss.error);
 
+export const getIsStepModalOpened = createSelector(
+	getStepsSlice,
+	(gss) => gss.data.isModalOpened
+);
+
 export const getCurrentStepInfo = createSelector(
 	getSteps,
 	getCurrentStep,

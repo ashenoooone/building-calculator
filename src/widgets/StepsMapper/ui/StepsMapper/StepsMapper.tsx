@@ -5,20 +5,26 @@ import HouseImg from '~/shared/assets/house.png';
 import { Card } from '~/shared/ui/Card';
 import { Text } from '~/shared/ui/Text';
 import { Button } from '~/shared/ui/Button';
-import { getCurrentStepInfo, StepModal } from '~/entities/Step';
-import { PopUp } from '~/shared/ui/PopUp';
+import {
+	getCurrentStepInfo,
+	getIsStepModalOpened,
+	StepModal,
+	stepsActions
+} from '~/entities/Step';
+import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 
 export const StepsMapper = () => {
 	const currentStep = useSelector(getCurrentStepInfo);
-	const [isPopupOpened, setIsPopupOpened] = useState(false);
+	const isModalOpened = useSelector(getIsStepModalOpened);
+	const dispatch = useAppDispatch();
 
 	const onClosePopup = useCallback(() => {
-		setIsPopupOpened(false);
-	}, []);
+		dispatch(stepsActions.setIsModalOpened(false));
+	}, [dispatch]);
 
 	const onOpenPopup = useCallback(() => {
-		setIsPopupOpened(true);
-	}, []);
+		dispatch(stepsActions.setIsModalOpened(true));
+	}, [dispatch]);
 
 	return (
 		<div className={cls.StepsMapper}>
@@ -46,7 +52,7 @@ export const StepsMapper = () => {
 					Выбрать
 				</Button>
 				<StepModal
-					statusOpen={isPopupOpened}
+					statusOpen={isModalOpened}
 					closeFunc={onClosePopup}
 					step={{
 						id: 1,

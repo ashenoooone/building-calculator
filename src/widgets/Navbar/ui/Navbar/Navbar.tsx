@@ -83,7 +83,7 @@ export const Navbar = memo((props: NavbarProps) => {
 					);
 				})}
 				<Navlink
-					status={getNavlinkStatus(steps.length - 1, currentStep)}
+					status={getNavlinkStatus(steps.length + 1, currentStep)}
 					title={<CalcSvg />}
 					text='Результат'
 				/>

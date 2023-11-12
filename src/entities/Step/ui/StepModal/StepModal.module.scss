@@ -1,4 +1,6 @@
 .StepModal {
+	// todo пофиксить min-h-screen
+	@apply flex flex-col min-h-screen;
 }
 
 .title {
@@ -11,9 +13,18 @@
 }
 
 .header {
-	@apply py-10 bg-black bg-opacity-60 px-7;
+	@apply py-10 bg-black bg-opacity-60 px-7 shrink;
+}
+
+.product {
+	// fixme не работает класс
+	@apply max-h-[150px];
 }
 
 .content {
-	@apply flex gap-sm pt-10 px-4 w-full;
+	@apply flex grow items-baseline gap-sm py-10 px-4 w-full;
+}
+
+.footer {
+	@apply w-full flex justify-between bg-black bg-opacity-60 px-7 py-4 shrink;
 }

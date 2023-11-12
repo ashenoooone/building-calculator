@@ -6,7 +6,8 @@ import { stepsApi } from '~/entities/Step/api/stepsApi';
 const initialState: StepsSchema = {
 	data: {
 		steps: [],
-		currentStep: 0
+		currentStep: 0,
+		isModalOpened: false
 	},
 	error: null,
 	isLoading: false
@@ -16,6 +17,9 @@ export const stepsSlice = createSlice({
 	name: 'stepsSlice',
 	initialState,
 	reducers: {
+		setIsModalOpened: (state, action: PayloadAction<boolean>) => {
+			state.data.isModalOpened = action.payload;
+		},
 		setCurrentStep: (state, action: PayloadAction<number>) => {
 			state.data.currentStep = action.payload;
 			localStorage.setItem(

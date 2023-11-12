@@ -20,6 +20,7 @@ export interface StepsSchema {
 	data?: {
 		steps?: IStep[];
 		currentStep?: number;
+		isModalOpened?: boolean;
 	};
 	isLoading?: boolean;
 	error?: FetchBaseQueryError;

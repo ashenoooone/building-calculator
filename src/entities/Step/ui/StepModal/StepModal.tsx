@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './StepModal.module.scss';
-import { getCurrentStep, IStep } from '~/entities/Step';
+import { getCurrentStep, IStep, stepsActions } from '~/entities/Step';
 import { PopUp, PopUpProps } from '~/shared/ui/PopUp';
 import { Navbar } from '~/widgets/Navbar';
 import { classNames } from '~/shared/lib/classNames';
@@ -16,6 +16,7 @@ import { IComponent } from '~/entities/Step/model/types';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 import { getComponentsByStep, ResultSliceActions } from '~/entities/Result';
 import { checked } from '~/shared/ui/Radio/ui/Radio.stories';
+import { Button } from '~/shared/ui/Button';
 
 interface StepModalProps extends PopUpProps {
 	className?: string;
@@ -78,6 +79,7 @@ export const StepModal = (props: StepModalProps) => {
 	const renderCheckboxGroup = useCallback((p: IComponent) => {
 		return (
 			<Product
+				className={cls.product}
 				type='checkbox'
 				title={p.title}
 				description={p.title}
@@ -86,6 +88,14 @@ export const StepModal = (props: StepModalProps) => {
 			/>
 		);
 	}, []);
+
+	const onCloseButtonClick = useCallback(() => {
+		dispatch(stepsActions.setIsModalOpened(false));
+	}, [dispatch]);
+
+	const onNextStepClick = useCallback(() => {
+		dispatch(stepsActions.setCurrentStep(currentStep + 1));
+	}, [currentStep, dispatch]);
 
 	return (
 		<PopUp
@@ -101,6 +111,10 @@ export const StepModal = (props: StepModalProps) => {
 				{step.multipleSelect
 					? step.components.map(renderCheckboxGroup)
 					: step.components.map(renderRadioGroup)}
+			</div>
+			<div className={cls.footer}>
+				<Button onClick={onCloseButtonClick}>Закрыть</Button>
+				<Button onClick={onNextStepClick}>Далее</Button>
 			</div>
 		</PopUp>
 	);

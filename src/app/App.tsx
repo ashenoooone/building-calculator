@@ -22,7 +22,7 @@ export function App() {
 		if (currentStep === 0) {
 			return <CalculatePrices />;
 		}
-		if (currentStep === steps?.length) {
+		if (currentStep === (steps?.length || 0) + 1) {
 			return <Result />;
 		}
 		return <StepsMapper />;

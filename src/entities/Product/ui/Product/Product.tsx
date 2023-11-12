@@ -6,6 +6,7 @@ import { Hint } from '~/shared/ui/Hint';
 import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
 import InfoSvg from '~/shared/assets/info.svg';
 import { Checkbox } from '~/shared/ui/Checkbox';
+import { classNames } from '~/shared/lib/classNames';
 
 type ProductPropsType = 'checkbox' | 'radio';
 
@@ -58,7 +59,7 @@ export const Product = (props: ProductProps) => {
 			paddings='paddings_m'
 			border={!!checked}
 			type='inverted'
-			className={cls.Product}
+			className={classNames(cls.Product, {}, [className])}
 			{...rest}
 		>
 			{controller}
