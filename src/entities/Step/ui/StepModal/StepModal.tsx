@@ -1,4 +1,10 @@
-import React, { ChangeEvent, useCallback, useEffect, useMemo } from 'react';
+import React, {
+	ChangeEvent,
+	memo,
+	useCallback,
+	useEffect,
+	useMemo
+} from 'react';
 import { useSelector } from 'react-redux';
 import cls from './StepModal.module.scss';
 import {
@@ -26,12 +32,12 @@ interface StepModalProps extends PopUpProps {
 }
 
 const getProductsSkeletons = () => {
-	return new Array(5).fill(0).map((i) => {
-		return <ProductSkeleton key={`productskeleton${i}`} />;
+	return new Array(5).fill(0).map((i, idx) => {
+		return <ProductSkeleton key={`productskeleton${idx}`} />;
 	});
 };
 
-export const StepModal = (props: StepModalProps) => {
+export const StepModal = memo((props: StepModalProps) => {
 	const { className = '', ...popupProps } = props;
 	const dispatch = useAppDispatch();
 	const components = useSelector(getComponentsByStep);
@@ -147,14 +153,13 @@ export const StepModal = (props: StepModalProps) => {
 	}, [currentStep, dispatch]);
 
 	const content = useMemo(() => {
-		if (isLoading) {
+		if (isLoading || isFetching || !step) {
 			return getProductsSkeletons();
 		}
-
-		return step.multipleSelect
+		return step?.multipleSelect
 			? step?.components.map(renderCheckboxGroup)
 			: step?.components.map(renderRadioGroup);
-	}, [isLoading, renderCheckboxGroup, renderRadioGroup, step]);
+	}, [isFetching, isLoading, renderCheckboxGroup, renderRadioGroup, step]);
 
 	if (isError) {
 		return <h1>Error</h1>;
@@ -181,4 +186,4 @@ export const StepModal = (props: StepModalProps) => {
 			</div>
 		</PopUp>
 	);
-};
+});
