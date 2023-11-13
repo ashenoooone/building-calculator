@@ -8,7 +8,6 @@ export interface StepResult {
 
 export interface ResultSchema {
 	steps?: StepResult[];
-	summary: number;
 }
 
 export interface EditStepActionPayload {

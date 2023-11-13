@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import cls from './Card.module.scss';
 import { classNames } from '~/shared/lib/classNames';
 
-type CardStyle = 'default' | 'inverted';
+export type CardStyle = 'default' | 'inverted';
 type Paddings = 'paddings_sm' | 'paddings_m' | 'paddings_xl';
 
 export interface CardProps {

@@ -7,17 +7,14 @@ import {
 } from '../types';
 
 const initialState: ResultSchema = {
-	steps: [],
-	summary: 0
+	steps: []
+	// todo подумать о том, чтобы сделать summary - полем, вместо селектора
 };
 
 export const ResultSlice = createSlice({
 	name: 'ResultSlice',
 	initialState,
 	reducers: {
-		addToSummary: (state, action: PayloadAction<number>) => {
-			state.summary += action.payload;
-		},
 		addStep: (state, action: PayloadAction<StepResult>) => {
 			if (!state.steps.find((i) => i.order === action.payload.order)) {
 				state.steps.push(action.payload);
@@ -28,7 +25,9 @@ export const ResultSlice = createSlice({
 			action: PayloadAction<EditStepActionPayload>
 		) => {
 			const step = state.steps.find((s) => s.order === action.payload.order);
-			step.values.filter((i) => i.id !== action.payload.componentId);
+			step.values = step.values.filter(
+				(i) => i.id !== action.payload.componentId
+			);
 		},
 		addComponentToStep: (
 			state,

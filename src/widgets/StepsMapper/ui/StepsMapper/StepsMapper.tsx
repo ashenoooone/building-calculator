@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './StepsMapper.module.scss';
 import HouseImg from '~/shared/assets/house.png';
@@ -54,28 +54,6 @@ export const StepsMapper = () => {
 				<StepModal
 					statusOpen={isModalOpened}
 					closeFunc={onClosePopup}
-					step={{
-						id: 1,
-						title: 'Шаг№1',
-						description: 'Desc',
-						multipleSelect: false,
-						components: [
-							{
-								id: 2,
-								title: 'Компонент №1',
-								imageUrl: 'https://i.imgur.com/MQQA2Dd.jpeg',
-								price: '10000',
-								jobPrice: '1000'
-							},
-							{
-								id: 4,
-								title: 'Компонент №2',
-								imageUrl: 'https://i.imgur.com/MQQA2Dd.jpeg',
-								price: '10000',
-								jobPrice: '1000'
-							}
-						]
-					}}
 				/>
 			</Card>
 		</div>

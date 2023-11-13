@@ -22,7 +22,9 @@
 }
 
 .content {
-	@apply flex grow items-baseline gap-sm py-10 px-4 w-full;
+	display: grid;
+	grid-template-rows: repeat(auto-fit, 100px);
+	@apply grid-cols-2 grow gap-sm py-10 px-4 w-full;
 }
 
 .footer {

@@ -4,8 +4,8 @@ export interface IComponent {
 	id: number;
 	title: string;
 	imageUrl: string;
-	price: string;
-	jobPrice: string;
+	price: number;
+	jobPrice: number;
 }
 
 export interface IStep {

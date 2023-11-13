@@ -9,8 +9,15 @@ export const stepsApi = rtkApi.injectEndpoints({
 				method: 'GET'
 			}),
 			keepUnusedDataFor: 60 * 20
+		}),
+		getStep: build.query<IStep, number>({
+			query: (id: number) => ({
+				url: `/steps/${id}`,
+				method: 'GET'
+			}),
+			keepUnusedDataFor: 60 * 20
 		})
 	})
 });
 
-export const { useGetStepsQuery } = stepsApi;
+export const { useGetStepsQuery, useGetStepQuery } = stepsApi;

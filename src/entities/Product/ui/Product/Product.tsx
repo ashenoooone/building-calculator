@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useMemo } from 'react';
+import React, { InputHTMLAttributes, memo, useMemo } from 'react';
 import cls from './Product.module.scss';
 import { Radio } from '~/shared/ui/Radio';
 import { Card } from '~/shared/ui/Card';
@@ -16,12 +16,12 @@ interface ProductProps extends InputHTMLAttributes<HTMLInputElement> {
 	title: string;
 	description: string;
 	img: string;
-	price: string;
+	price: number;
 	checked?: boolean;
 	type?: ProductPropsType;
 }
 
-export const Product = (props: ProductProps) => {
+export const Product = memo((props: ProductProps) => {
 	const {
 		className = '',
 		img,
@@ -76,4 +76,4 @@ export const Product = (props: ProductProps) => {
 			<p className={cls.price}>{convertToRubbleFormat(price)}</p>
 		</Card>
 	);
-};
+});
