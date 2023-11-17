@@ -10,6 +10,7 @@ import cls from './StepModal.module.scss';
 import {
 	getCurrentStep,
 	getCurrentStepInfo,
+	getStepsLength,
 	stepsActions
 } from '~/entities/Step';
 import { PopUp, PopUpProps } from '~/shared/ui/PopUp';
@@ -19,6 +20,7 @@ import { Product, ProductSkeleton } from '~/entities/Product';
 import { IComponent } from '~/entities/Step/model/types';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 import {
+	checkIfAllStepsChecked,
 	getComponentsByStep,
 	getResultSumm,
 	ResultSliceActions
@@ -43,6 +45,8 @@ export const StepModal = memo((props: StepModalProps) => {
 	const components = useSelector(getComponentsByStep);
 	const currentStep = useSelector(getCurrentStep);
 	const summary = useSelector(getResultSumm);
+	const stepsLength = useSelector(getStepsLength);
+	const allStepsChecked = useSelector(checkIfAllStepsChecked);
 	const { id: stepId } = useSelector(getCurrentStepInfo);
 	const {
 		data: step,
@@ -50,6 +54,13 @@ export const StepModal = memo((props: StepModalProps) => {
 		isError,
 		isFetching
 	} = useGetStepQuery(stepId);
+
+	const isNextButtonActive = useMemo(() => {
+		if (currentStep < stepsLength) {
+			return true;
+		}
+		return allStepsChecked;
+	}, [allStepsChecked, currentStep, stepsLength]);
 
 	const ifComponentChecked = useCallback(
 		(componentId: number): boolean => {
@@ -101,6 +112,7 @@ export const StepModal = memo((props: StepModalProps) => {
 		if (step && !isFetching && !isLoading && !isError) {
 			dispatch(
 				ResultSliceActions.addStep({
+					id: step.id,
 					order: currentStep,
 					isMultiple: Boolean(step.multipleSelect),
 					values: []
@@ -182,7 +194,12 @@ export const StepModal = memo((props: StepModalProps) => {
 			<div className={cls.content}>{content}</div>
 			<div className={cls.footer}>
 				<Button onClick={onCloseButtonClick}>Закрыть</Button>
-				<Button onClick={onNextStepClick}>Далее</Button>
+				<Button
+					disabled={!isNextButtonActive}
+					onClick={onNextStepClick}
+				>
+					Далее
+				</Button>
 			</div>
 		</PopUp>
 	);

@@ -1,3 +1,8 @@
 .Button {
-	@apply text-inverted-primary bg-primary rounded-lg px-4 py-2;
+  @apply text-inverted-primary bg-primary rounded-lg px-4 py-2;
+
+  &.disabled {
+    @apply bg-gray-500 pointer-events-none
+  }
 }
+

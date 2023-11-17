@@ -20,6 +20,7 @@ interface NavlinkProps {
 	width?: number;
 	height?: number;
 	status?: NavlinkStatusType;
+	clickable?: boolean;
 }
 
 export const Navlink = memo((props: NavlinkProps) => {
@@ -30,7 +31,8 @@ export const Navlink = memo((props: NavlinkProps) => {
 		onClick,
 		width = 46,
 		height = 46,
-		status = 'active'
+		status = 'active',
+		clickable = true
 	} = props;
 	const [hoverRef, isHover] = useHover();
 
@@ -82,7 +84,10 @@ export const Navlink = memo((props: NavlinkProps) => {
 			ref={hoverRef}
 			type='button'
 			onClick={onNavlinkClick}
-			className={classNames(cls.Navlink, {}, [className, cls[status]])}
+			className={classNames(cls.Navlink, { [cls.unclickable]: !clickable }, [
+				className,
+				cls[status]
+			])}
 		>
 			{content}
 		</button>

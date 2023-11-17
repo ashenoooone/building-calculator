@@ -7,10 +7,13 @@ export const getCurrentStep = createSelector(
 	getStepsSlice,
 	(gss) => gss.data.currentStep ?? 0
 );
+
 export const getSteps = createSelector(
 	getStepsSlice,
 	(gss) => gss.data.steps ?? []
 );
+
+export const getStepsLength = createSelector(getSteps, (s) => s.length);
 
 export const getStepsIsLoading = createSelector(
 	getStepsSlice,

@@ -14,7 +14,7 @@ import {
 	stepsActions
 } from '~/entities/Step';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
-import { getResultSteps } from '~/entities/Result';
+import { checkIfAllStepsChecked, getResultSteps } from '~/entities/Result';
 
 interface NavbarProps {
 	className?: string;
@@ -28,6 +28,7 @@ export const Navbar = memo((props: NavbarProps) => {
 	const currentStep = useSelector(getCurrentStep);
 	const dispatch = useAppDispatch();
 	const stepsResults = useSelector(getResultSteps);
+	const allStepsChecked = useSelector(checkIfAllStepsChecked);
 
 	const getNavlinkStatus = (idx: number): NavlinkStatusType => {
 		if (currentStep === idx) {
@@ -86,6 +87,8 @@ export const Navbar = memo((props: NavbarProps) => {
 					status={getNavlinkStatus(steps.length + 1)}
 					title={<CalcSvg />}
 					text='Результат'
+					clickable={allStepsChecked}
+					onClick={onNavlinkClick(steps.length + 1)}
 				/>
 			</HStack>
 		</div>

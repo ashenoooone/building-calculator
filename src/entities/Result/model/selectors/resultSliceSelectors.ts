@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { StateSchema } from '~/app/providers/StoreProvider';
-import { getCurrentStep } from '~/entities/Step';
+import { getCurrentStep, getSteps } from '~/entities/Step';
 
 export const getResultSlice = (state: StateSchema) => state.resultSlice;
 
@@ -31,5 +31,20 @@ export const getComponentsByStep = createSelector(
 	getResultSteps,
 	(gcs, grs) => {
 		return grs?.find((i) => i.order === gcs);
+	}
+);
+
+export const checkIfAllStepsChecked = createSelector(
+	getSteps,
+	getResultSteps,
+	(steps, resultSteps) => {
+		if (
+			!resultSteps.every((r) => {
+				return r.values.length > 0;
+			})
+		) {
+			return false;
+		}
+		return steps.length === resultSteps.length;
 	}
 );
