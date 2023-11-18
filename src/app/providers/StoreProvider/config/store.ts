@@ -20,7 +20,7 @@ const persistConfig: PersistConfig<
 > = {
 	key: 'app',
 	storage,
-	whitelist: ['resultSlice']
+	whitelist: ['resultSlice', 'calculatePrices']
 };
 
 export function createReduxStore(initialState?: StateSchema) {
