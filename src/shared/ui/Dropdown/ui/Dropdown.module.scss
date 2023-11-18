@@ -1,14 +1,13 @@
 .Dropdown {
-
 }
 
 .button {
-  @apply flex items-center bg-inverted-primary w-full justify-between rounded-lg px-4 py-2 text-left text-sm font-medium focus:outline-none focus-visible:ring focus-visible:ring-primary/75;
-  &_open {
-    @apply rounded-b-none;
-  }
+	@apply flex items-center bg-inverted-primary w-full justify-between rounded-lg px-4 py-2 text-left text-sm font-medium focus:outline-none focus-visible:ring focus-visible:ring-primary/75;
+	&_open {
+		@apply rounded-b-none;
+	}
 }
 
 .panel {
-  @apply px-4 bg-inverted-primary pb-2 rounded-b-lg pt-4 text-sm text-gray-500;
+	@apply px-4 bg-inverted-primary pb-2 rounded-b-lg pt-4 text-sm text-gray-500;
 }
