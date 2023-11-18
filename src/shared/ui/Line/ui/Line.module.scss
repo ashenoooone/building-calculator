@@ -1,0 +1,11 @@
+.Line {
+  @apply w-full border-t border-gray-300;
+
+  &.dashed {
+    @apply border-dashed border-gray-400;
+  }
+
+  &.solid {
+    @apply border-solid;
+  }
+}

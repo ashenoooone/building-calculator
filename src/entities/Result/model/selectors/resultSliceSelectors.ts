@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { StateSchema } from '~/app/providers/StoreProvider';
-import { getCurrentStep, getSteps } from '~/entities/Step';
+import { getCurrentStep, getSteps, IComponent } from '~/entities/Step';
 
 export const getResultSlice = (state: StateSchema) => state.resultSlice;
 
@@ -26,13 +26,18 @@ export const getResultSumm = createSelector(getResultSteps, (steps): number => {
 	}
 	return 0;
 });
-export const getComponentsByStep = createSelector(
+export const getComponentsOfCurrentStep = createSelector(
 	getCurrentStep,
 	getResultSteps,
 	(gcs, grs) => {
 		return grs?.find((i) => i.order === gcs);
 	}
 );
+
+export const getComponentsByStep = (id: number) =>
+	createSelector(getSteps, (grs) => {
+		return grs?.find((i) => i.id === id)?.components;
+	});
 
 export const checkIfAllStepsChecked = createSelector(
 	getSteps,

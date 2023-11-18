@@ -11,6 +11,10 @@
 	box-sizing: border-box;
 }
 
+hr {
+	@apply text-gray-400;
+}
+
 body {
 	background: var(--bg-color);
 	font: var(--font-md);

@@ -3,6 +3,7 @@ import { IComponent } from '~/entities/Step';
 export interface StepResult {
 	id: number;
 	order?: number;
+	title: string;
 	isMultiple?: boolean;
 	values: IComponent[];
 }

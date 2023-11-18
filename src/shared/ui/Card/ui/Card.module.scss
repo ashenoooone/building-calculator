@@ -20,7 +20,7 @@
 	}
 
 	&.default {
-		@apply bg-[var(--bg-color)];
+		@apply bg-bg-color;
 	}
 
 	&.inverted {

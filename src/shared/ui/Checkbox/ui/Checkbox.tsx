@@ -7,6 +7,7 @@ interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 	text?: ReactNode;
 	checked?: boolean;
+	textClasses?: string;
 }
 
 export const Checkbox = memo((props: CheckboxProps) => {
@@ -17,6 +18,7 @@ export const Checkbox = memo((props: CheckboxProps) => {
 		checked = false,
 		text,
 		name,
+		textClasses,
 		...rest
 	} = props;
 	return (
@@ -60,7 +62,9 @@ export const Checkbox = memo((props: CheckboxProps) => {
 						</svg>
 					</Transition>
 				</div>
-				<div className={cls.checkbox_text}>{text}</div>
+				<div className={classNames(cls.checkbox_text, {}, [textClasses])}>
+					{text}
+				</div>
 			</label>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './Navbar.module.scss';
 import { Navlink, NavlinkStatusType } from '~/shared/ui/Navlink';
@@ -51,6 +51,16 @@ export const Navbar = memo((props: NavbarProps) => {
 		[dispatch]
 	);
 
+	const resultButtonStatus = useMemo<NavlinkStatusType>(() => {
+		if (currentStep === steps.length + 1) {
+			return 'active';
+		}
+		if (allStepsChecked) {
+			return 'visited';
+		}
+		return 'blocked';
+	}, [allStepsChecked, currentStep, steps.length]);
+
 	if (isLoading || error) {
 		return null;
 	}
@@ -84,7 +94,7 @@ export const Navbar = memo((props: NavbarProps) => {
 					);
 				})}
 				<Navlink
-					status={getNavlinkStatus(steps.length + 1)}
+					status={resultButtonStatus}
 					title={<CalcSvg />}
 					text='Результат'
 					clickable={allStepsChecked}

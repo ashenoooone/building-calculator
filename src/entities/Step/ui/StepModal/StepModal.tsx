@@ -21,7 +21,7 @@ import { IComponent } from '~/entities/Step/model/types';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 import {
 	checkIfAllStepsChecked,
-	getComponentsByStep,
+	getComponentsOfCurrentStep,
 	getResultSumm,
 	ResultSliceActions
 } from '~/entities/Result';
@@ -42,7 +42,7 @@ const getProductsSkeletons = () => {
 export const StepModal = memo((props: StepModalProps) => {
 	const { className = '', ...popupProps } = props;
 	const dispatch = useAppDispatch();
-	const components = useSelector(getComponentsByStep);
+	const components = useSelector(getComponentsOfCurrentStep);
 	const currentStep = useSelector(getCurrentStep);
 	const summary = useSelector(getResultSumm);
 	const stepsLength = useSelector(getStepsLength);
@@ -113,6 +113,7 @@ export const StepModal = memo((props: StepModalProps) => {
 			dispatch(
 				ResultSliceActions.addStep({
 					id: step.id,
+					title: step.title,
 					order: currentStep,
 					isMultiple: Boolean(step.multipleSelect),
 					values: []
