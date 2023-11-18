@@ -3,11 +3,11 @@
 }
 
 .image {
-	@apply max-w-[500px];
+	@apply max-w-[500px] basis-2/3;
 }
 
 .card {
-	@apply min-w-[300px];
+	@apply min-w-[300px] basis-1/3;
 }
 
 .choose_btn {

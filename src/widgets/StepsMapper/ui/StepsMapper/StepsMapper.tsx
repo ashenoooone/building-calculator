@@ -12,10 +12,13 @@ import {
 	stepsActions
 } from '~/entities/Step';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
+import { getResultSumm } from '~/entities/Result';
+import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
 
 export const StepsMapper = () => {
 	const currentStep = useSelector(getCurrentStepInfo);
 	const isModalOpened = useSelector(getIsStepModalOpened);
+	const totalPrice = useSelector(getResultSumm);
 	const dispatch = useAppDispatch();
 
 	const onClosePopup = useCallback(() => {
@@ -44,7 +47,7 @@ export const StepsMapper = () => {
 					text={currentStep.description}
 				/>
 				<hr className='mt-4 mb-4' />
-				<Text title='Общая стоимость' />
+				<Text title={`Общая стоимость ${convertToRubbleFormat(totalPrice)}`} />
 				<Button
 					className={cls.choose_btn}
 					onClick={onOpenPopup}

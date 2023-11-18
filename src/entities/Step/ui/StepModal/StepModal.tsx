@@ -185,7 +185,6 @@ export const StepModal = memo((props: StepModalProps) => {
 		>
 			<div className={cls.header}>
 				<h2 className={cls.title}>{step?.title}</h2>
-				<p></p>
 				<p className={cls.description}>
 					{step?.description} <br /> Промежуточная стоимость{' '}
 					{convertToRubbleFormat(summary)}

@@ -16,6 +16,7 @@ import {
 	ResultSliceActions
 } from '~/entities/Result';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
+import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
 
 interface ResultStepProps {
 	className?: string;
@@ -32,6 +33,13 @@ export const ResultStep = (props: ResultStepProps) => {
 		},
 		[resultStep?.values]
 	);
+
+	const summ = useMemo(() => {
+		return resultStep.values.reduce((ac, v) => {
+			ac += v.price;
+			return ac;
+		}, 0);
+	}, [resultStep.values]);
 
 	const generateProductOnChangeHandler = useCallback(
 		(c: IComponent) => {
@@ -66,9 +74,10 @@ export const ResultStep = (props: ResultStepProps) => {
 					/>
 					<Text title={resultStep.title} />
 				</div>
+				<Text text={convertToRubbleFormat(summ)} />
 			</div>
 		);
-	}, [resultStep.order, resultStep.title]);
+	}, [resultStep.order, resultStep.title, summ]);
 
 	const content = useMemo(() => {
 		if (resultStep.isMultiple) {
@@ -109,7 +118,12 @@ export const ResultStep = (props: ResultStepProps) => {
 				</>
 			);
 		});
-	}, [resultStep.isMultiple, resultStep.values]);
+	}, [
+		generateProductOnChangeHandler,
+		ifComponentChecked,
+		resultStep.isMultiple,
+		resultStep.values
+	]);
 
 	return (
 		<Dropdown
