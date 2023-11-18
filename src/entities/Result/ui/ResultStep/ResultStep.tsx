@@ -1,20 +1,14 @@
-import React, { ChangeEvent, FC, ReactNode, useCallback, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { ChangeEvent, useCallback, useMemo } from 'react';
 import cls from './ResultStep.module.scss';
 import { classNames } from '~/shared/lib/classNames';
 import { Dropdown } from '~/shared/ui/Dropdown';
 import { StepResult } from '../../model/types';
 import { Navlink } from '~/shared/ui/Navlink';
 import { Text } from '~/shared/ui/Text';
-import { Product } from '~/entities/Product';
 import { Checkbox } from '~/shared/ui/Checkbox';
 import { Line } from '~/shared/ui/Line';
 import { IComponent } from '~/entities/Step';
-import {
-	getComponentsByStep,
-	getComponentsOfCurrentStep,
-	ResultSliceActions
-} from '~/entities/Result';
+import { ResultSliceActions } from '~/entities/Result';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
 
@@ -108,7 +102,7 @@ export const ResultStep = (props: ResultStepProps) => {
 				<>
 					<Line />
 					<div className='flex my-4 justify-between items-baseline'>
-						<span className='w-max'>{i.title}</span>
+						<span className='w-max shrink-0'>{i.title}</span>
 						<Line
 							className='mx-3'
 							type='dashed'

@@ -41,7 +41,6 @@ export const PopUp = (props: PopUpProps) => {
 				>
 					<div className='fixed inset-0 bg-black/25' />
 				</Transition.Child>
-
 				<div className='fixed inset-0 min-h-full overflow-y-auto'>
 					<div className='flex flex-col min-h-full min-w-full'>
 						<Transition.Child
