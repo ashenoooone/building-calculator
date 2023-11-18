@@ -96,7 +96,7 @@ export const ResultStep = (props: ResultStepProps) => {
 								className='mx-3'
 								type='dashed'
 							/>
-							<span>{i.price}</span>
+							<span>{convertToRubbleFormat(i.price)}</span>
 						</div>
 					</>
 				);
@@ -113,7 +113,7 @@ export const ResultStep = (props: ResultStepProps) => {
 							className='mx-3'
 							type='dashed'
 						/>
-						<span className='w-max'>{i.price}</span>
+						<span className='w-max'>{convertToRubbleFormat(i.price)}</span>
 					</div>
 				</>
 			);
