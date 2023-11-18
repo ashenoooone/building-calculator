@@ -76,7 +76,7 @@ export const Navbar = memo((props: NavbarProps) => {
 					onClick={onNavlinkClick(0)}
 					title={<HomeSvg />}
 					text='Характеристики дома'
-					status='visited'
+					status={getNavlinkStatus(0) === 'active' ? 'active' : 'visited'}
 				/>
 				<hr className={cls.line} />
 				{steps.map((item, idx) => {

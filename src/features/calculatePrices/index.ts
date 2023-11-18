@@ -4,3 +4,4 @@ export {
 	calculatePricesSliceReducer
 } from './model/slice/calculatePricesSlice';
 export type { CalculatePricesSchema } from './model/types';
+export * from './model/selectors/calculatePricesSelectors';

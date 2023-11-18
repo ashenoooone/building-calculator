@@ -1,32 +1,40 @@
 import React, { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import cls from './CalculatePrices.module.scss';
 import HouseImg from '~/shared/assets/house.png';
 import { Card } from '~/shared/ui/Card';
 import { Text } from '~/shared/ui/Text';
-import { Select } from '~/shared/ui/Select';
+import { Select, valueType } from '~/shared/ui/Select';
 import { Button } from '~/shared/ui/Button';
 import { Input } from '~/shared/ui/Input';
-import { CalculatePricesSchema } from '~/features/calculatePrices/model/types';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 import { stepsActions } from '~/entities/Step';
+import { calculatePricesSliceActions } from '~/features/calculatePrices';
+import { FloorType } from '~/features/calculatePrices/model/types';
+import {
+	getCalculatePricesArea,
+	getCalculatePricesFloor
+} from '../../model/selectors/calculatePricesSelectors';
 
 export const CalculatePrices = () => {
 	const dispatch = useAppDispatch();
-	const {
-		control,
-		formState: { errors },
-		handleSubmit
-	} = useForm<CalculatePricesSchema>({
-		shouldUseNativeValidation: true,
-		defaultValues: {
-			floor: '1 этаж'
-		}
-	});
+	const floor = useSelector(getCalculatePricesFloor);
+	const area = useSelector(getCalculatePricesArea);
 
-	const onSubmit = useCallback(
-		(values: any) => {
-			dispatch(stepsActions.setCurrentStep(1));
+	const onSubmit = useCallback(() => {
+		dispatch(stepsActions.setCurrentStep(1));
+	}, [dispatch]);
+
+	const onAreaChange = useCallback(
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			dispatch(calculatePricesSliceActions.setArea(+event.target.value));
+		},
+		[dispatch]
+	);
+	const onFloorsChange = useCallback(
+		(value: valueType) => {
+			dispatch(calculatePricesSliceActions.setFloor(value as FloorType));
 		},
 		[dispatch]
 	);
@@ -47,55 +55,33 @@ export const CalculatePrices = () => {
 					text='Параметры дома'
 				/>
 				<form
-					onSubmit={handleSubmit(onSubmit)}
+					onSubmit={onSubmit}
 					className={cls.form}
 				>
-					<Controller
-						control={control}
-						name='area'
-						render={({ field }) => (
-							<Input
-								label='Площадь дома'
-								type='number'
-								className='w-full'
-								{...field}
-							/>
-						)}
-						rules={{
-							required: {
-								value: true,
-								message: 'Поле обязательно для заполнения'
-							},
-							min: {
-								value: 10,
-								message: 'Минимальная плошадь - 10'
-							},
-							max: {
-								value: 1000,
-								message: 'Максимальная площадь - 1000'
-							}
-						}}
+					<Input
+						required
+						value={area}
+						label='Площадь дома'
+						type='number'
+						className='w-full'
+						onChange={onAreaChange}
 					/>
-					<Controller
-						render={({ field }) => (
-							<Select
-								label='Количество этажей'
-								placeholder='Количество этажей'
-								selectOptions={[
-									{
-										value: '1 этаж',
-										content: '1 этаж'
-									},
-									{
-										value: '2 этажа',
-										content: '2 этажа'
-									}
-								]}
-								{...field}
-							/>
-						)}
-						name='floor'
-						control={control}
+					<Select
+						required
+						value={floor}
+						label='Количество этажей'
+						placeholder='Количество этажей'
+						selectOptions={[
+							{
+								value: 1,
+								content: '1 этаж'
+							},
+							{
+								value: 2,
+								content: '2 этажа'
+							}
+						]}
+						onChange={onFloorsChange}
 					/>
 					<Button type='submit'>Рассчитать</Button>
 				</form>

@@ -11,10 +11,16 @@ import MoneyIcon from '~/shared/assets/money.svg';
 import DownloadIcon from '~/shared/assets/download.svg';
 import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
 import { Button } from '~/shared/ui/Button';
+import {
+	getCalculatePricesArea,
+	getCalculatePricesFloor
+} from '~/features/calculatePrices';
 
 export const Result = () => {
 	const stepResults = useSelector(getResultSteps);
 	const totalPrice = useSelector(getResultSumm);
+	const area = useSelector(getCalculatePricesArea);
+	const floors = useSelector(getCalculatePricesFloor);
 
 	return (
 		<div className={cls.Result}>
@@ -52,7 +58,7 @@ export const Result = () => {
 									type='dashed'
 									className='mx-2'
 								/>
-								<span className='shrink-0'>211 м</span>
+								<span className='shrink-0'>{area} м²</span>
 							</li>
 							<li className='flex justify-between items-baseline'>
 								<span className='w-max shrink-0'>Этажей</span>
@@ -60,7 +66,7 @@ export const Result = () => {
 									type='dashed'
 									className='mx-2'
 								/>
-								<span className='shrink-0'>3</span>
+								<span className='shrink-0'>{floors}</span>
 							</li>
 						</ul>
 					</Card>

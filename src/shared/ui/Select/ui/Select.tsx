@@ -5,7 +5,7 @@ import { Directions } from '~/shared/types';
 import ChevronDown from '~/shared/assets/chevron_down.svg';
 import { classNames } from '~/shared/lib/classNames';
 
-type valueType = string | number;
+export type valueType = string | number;
 
 export interface SelectOption {
 	content?: ReactNode;
@@ -65,7 +65,9 @@ export const Select = memo((props: SelectProps) => {
 					{placeholder && !value && (
 						<span className='text-gray-400'>{placeholder}</span>
 					)}
-					{value && <span>{value}</span>}
+					{value && (
+						<span>{selectOptions.find((i) => i.value === value).content}</span>
+					)}
 					<span className={cls.icon_container}>
 						<ChevronDown
 							className={cls.icon}
