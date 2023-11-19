@@ -12,7 +12,7 @@ export default (env: BuildEnv) => {
 		html: path.resolve(__dirname, 'public', 'index.html')
 	};
 
-	const apiUrl = env.apiUrl || 'https://domix.fita.cc';
+	const apiUrl = env.apiUrl || 'https://api-domix.fita.cc';
 
 	return buildWebpackConfig({
 		port,
