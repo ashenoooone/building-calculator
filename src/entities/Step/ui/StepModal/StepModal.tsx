@@ -34,7 +34,7 @@ interface StepModalProps extends PopUpProps {
 }
 
 const getProductsSkeletons = () => {
-	return new Array(5).fill(0).map((i, idx) => {
+	return new Array(2).fill(0).map((i, idx) => {
 		return <ProductSkeleton key={`productskeleton${idx}`} />;
 	});
 };

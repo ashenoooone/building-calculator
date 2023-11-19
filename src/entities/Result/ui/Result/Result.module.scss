@@ -25,6 +25,10 @@
 	@apply bg-white even:mt-3;
 }
 
+.buttons {
+	@apply flex gap-sm;
+}
+
 .list {
 	@apply text-gray-500;
 }

@@ -1,7 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './Result.module.scss';
-import { getResultSteps, getResultSumm } from '~/entities/Result';
+import {
+	getResultSteps,
+	getResultSumm,
+	ResultSliceActions
+} from '~/entities/Result';
 import { ResultStep } from '../ResultStep/ResultStep';
 import { Card } from '~/shared/ui/Card';
 import HouseIcon from '~/shared/assets/home.svg';
@@ -9,18 +13,27 @@ import { Line } from '~/shared/ui/Line';
 import { Text } from '~/shared/ui/Text';
 import MoneyIcon from '~/shared/assets/money.svg';
 import DownloadIcon from '~/shared/assets/download.svg';
+import AgainIcon from '~/shared/assets/again.svg';
 import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
 import { Button } from '~/shared/ui/Button';
 import {
 	getCalculatePricesArea,
 	getCalculatePricesFloor
 } from '~/features/calculatePrices';
+import { useAppDispatch } from '~/shared/lib/useAppDispatch';
+import { stepsActions } from '~/entities/Step';
 
 export const Result = () => {
 	const stepResults = useSelector(getResultSteps);
 	const totalPrice = useSelector(getResultSumm);
 	const area = useSelector(getCalculatePricesArea);
 	const floors = useSelector(getCalculatePricesFloor);
+	const dispatch = useAppDispatch();
+
+	const onDropClick = useCallback(() => {
+		dispatch(ResultSliceActions.drop());
+		dispatch(stepsActions.setCurrentStep(0));
+	}, [dispatch]);
 
 	return (
 		<div className={cls.Result}>
@@ -30,6 +43,13 @@ export const Result = () => {
 					<Button className='flex items-center gap-sm'>
 						<DownloadIcon className='w-6 h-6' />
 						Скачать
+					</Button>
+					<Button
+						className='flex items-center gap-sm'
+						onClick={onDropClick}
+					>
+						<AgainIcon className='w-6 h-6' />
+						Начать заново
 					</Button>
 				</div>
 			</div>

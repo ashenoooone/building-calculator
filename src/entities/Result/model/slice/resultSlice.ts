@@ -15,6 +15,7 @@ export const ResultSlice = createSlice({
 	name: 'ResultSlice',
 	initialState,
 	reducers: {
+		drop: (state) => initialState,
 		addStep: (state, action: PayloadAction<StepResult>) => {
 			if (!state.steps.find((i) => i.order === action.payload.order)) {
 				state.steps.push(action.payload);
