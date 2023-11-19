@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-};
+const initialState = {};
 
 export const CalculatorSlice = createSlice({
-  name: 'CalculatorSlice',
-  initialState,
-  reducers: {
-  },
+	name: 'CalculatorSlice',
+	initialState,
+	reducers: {}
 });
 
 export const { actions: CalculatorSliceActions } = CalculatorSlice;
