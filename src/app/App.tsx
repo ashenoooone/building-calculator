@@ -9,13 +9,18 @@ import {
 	stepsActions,
 	useGetStepsQuery
 } from '~/entities/Step';
-import { Result } from '~/entities/Result';
+import { Result, ResultSliceActions } from '~/entities/Result';
 import { StepsMapper } from '~/widgets/StepsMapper';
+import { useGetCalculatorVersionQuery } from '~/entities/Calculator';
+import { CALC_VERSION_LOCAL_STORAGE_KEY } from '~/shared/consts';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 
 export function App() {
 	const currentStep = useSelector(getCurrentStep);
+	const dispatch = useAppDispatch();
 	const steps = useSelector(getSteps);
+	const { isLoading: isGetCalculatorVersionLoading, data } =
+		useGetCalculatorVersionQuery();
 	const { isLoading } = useGetStepsQuery();
 
 	const content = useMemo(() => {
@@ -28,7 +33,22 @@ export function App() {
 		return <StepsMapper />;
 	}, [currentStep, steps?.length]);
 
-	if (isLoading) {
+	useEffect(() => {
+		const localCalcVersion = JSON.parse(
+			localStorage.getItem(CALC_VERSION_LOCAL_STORAGE_KEY)
+		);
+
+		if (data && localCalcVersion !== data.version) {
+			dispatch(ResultSliceActions.drop());
+			dispatch(stepsActions.setCurrentStep(0));
+			localStorage.setItem(
+				CALC_VERSION_LOCAL_STORAGE_KEY,
+				JSON.stringify(data.version)
+			);
+		}
+	}, [data, data?.version, dispatch]);
+
+	if (isLoading || isGetCalculatorVersionLoading) {
 		return <h1>Loading...</h1>;
 	}
 

@@ -1,5 +1,12 @@
 import { rtkApi } from '~/shared/api/rtkApi';
 import { IStep } from '~/entities/Step';
+import { FloorType } from '~/features/calculatePrices/model/types';
+
+export interface UseGetStepProps {
+	floors: FloorType;
+	area: number;
+	id: number;
+}
 
 export const stepsApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -10,9 +17,13 @@ export const stepsApi = rtkApi.injectEndpoints({
 			}),
 			keepUnusedDataFor: 60 * 20
 		}),
-		getStep: build.query<IStep, number>({
-			query: (id: number) => ({
+		getStep: build.query<IStep, UseGetStepProps>({
+			query: ({ id, floors, area }) => ({
 				url: `/steps/${id}`,
+				params: {
+					floors,
+					area
+				},
 				method: 'GET'
 			}),
 			keepUnusedDataFor: 60 * 20

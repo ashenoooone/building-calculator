@@ -17,6 +17,7 @@ export const stepsSlice = createSlice({
 	name: 'stepsSlice',
 	initialState,
 	reducers: {
+		drop: (state) => initialState,
 		setIsModalOpened: (state, action: PayloadAction<boolean>) => {
 			state.data.isModalOpened = action.payload;
 		},

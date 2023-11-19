@@ -28,6 +28,10 @@ import {
 import { Button } from '~/shared/ui/Button';
 import { useGetStepQuery } from '~/entities/Step/api/stepsApi';
 import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
+import {
+	getCalculatePricesArea,
+	getCalculatePricesFloor
+} from '~/features/calculatePrices';
 
 interface StepModalProps extends PopUpProps {
 	className?: string;
@@ -47,13 +51,15 @@ export const StepModal = memo((props: StepModalProps) => {
 	const summary = useSelector(getResultSumm);
 	const stepsLength = useSelector(getStepsLength);
 	const allStepsChecked = useSelector(checkIfAllStepsChecked);
+	const area = useSelector(getCalculatePricesArea);
+	const floor = useSelector(getCalculatePricesFloor);
 	const { id: stepId } = useSelector(getCurrentStepInfo);
 	const {
 		data: step,
 		isLoading,
 		isError,
 		isFetching
-	} = useGetStepQuery(stepId);
+	} = useGetStepQuery({ id: stepId, floors: floor, area });
 
 	const isNextButtonActive = useMemo(() => {
 		if (currentStep < stepsLength) {
