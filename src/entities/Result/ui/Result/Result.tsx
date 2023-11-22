@@ -17,6 +17,7 @@ import AgainIcon from '~/shared/assets/again.svg';
 import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
 import { Button } from '~/shared/ui/Button';
 import {
+	calculatePricesSliceActions,
 	getCalculatePricesArea,
 	getCalculatePricesFloor
 } from '~/features/calculatePrices';
@@ -33,6 +34,7 @@ export const Result = () => {
 	const onDropClick = useCallback(() => {
 		dispatch(ResultSliceActions.drop());
 		dispatch(stepsActions.setCurrentStep(0));
+		dispatch(calculatePricesSliceActions.setIsSubmitted(false));
 	}, [dispatch]);
 
 	return (

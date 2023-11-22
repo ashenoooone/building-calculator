@@ -1,32 +1,33 @@
 .StepModal {
-	// todo пофиксить min-h-screen
-	@apply flex flex-col min-h-screen;
+  // todo пофиксить min-h-screen
+  @apply flex flex-col min-h-screen;
 }
 
 .title {
-	font: var(--font-xxl);
-	@apply text-primary;
+  font: var(--font-xxl);
+  @apply text-primary;
 }
 
 .description {
-	@apply text-input-text-color mt-1 mb-7;
+  @apply text-input-text-color mt-1 mb-7;
 }
 
 .header {
-	@apply py-10 bg-black bg-opacity-60 px-7 shrink;
+  @apply py-10 bg-black bg-opacity-60 px-7 shrink;
 }
 
 .product {
-	// fixme не работает класс
-	@apply max-h-[150px];
+  @apply h-[110px] basis-[calc(50%-0.5rem)];
+}
+
+.content_wrapper {
+  @apply grow
 }
 
 .content {
-	display: grid;
-	grid-template-rows: repeat(auto-fit, 100px);
-	@apply grid-cols-2 grow gap-sm py-10 px-4 w-full;
+  @apply flex items-start flex-wrap gap-sm py-10 px-4 w-full;
 }
 
 .footer {
-	@apply w-full flex justify-between bg-black bg-opacity-60 px-7 py-4 shrink;
+  @apply w-full flex justify-between bg-black bg-opacity-60 px-7 py-4 shrink;
 }

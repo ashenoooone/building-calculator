@@ -15,6 +15,7 @@ import {
 } from '~/entities/Step';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 import { checkIfAllStepsChecked, getResultSteps } from '~/entities/Result';
+import { getCalculatePricesIsSubmitted } from '~/features/calculatePrices';
 
 interface NavbarProps {
 	className?: string;
@@ -29,6 +30,7 @@ export const Navbar = memo((props: NavbarProps) => {
 	const dispatch = useAppDispatch();
 	const stepsResults = useSelector(getResultSteps);
 	const allStepsChecked = useSelector(checkIfAllStepsChecked);
+	const isCalculatePricesSubmitted = useSelector(getCalculatePricesIsSubmitted);
 
 	const getNavlinkStatus = (idx: number): NavlinkStatusType => {
 		if (currentStep === idx) {
@@ -83,6 +85,7 @@ export const Navbar = memo((props: NavbarProps) => {
 					return (
 						<>
 							<Navlink
+								clickable={isCalculatePricesSubmitted}
 								key={`navlink${idx}`}
 								title={idx + 1}
 								status={getNavlinkStatus(idx + 1)}

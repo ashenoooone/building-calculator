@@ -23,6 +23,7 @@ export const CalculatePrices = () => {
 	const area = useSelector(getCalculatePricesArea);
 
 	const onSubmit = useCallback(() => {
+		dispatch(calculatePricesSliceActions.setIsSubmitted(true));
 		dispatch(stepsActions.setCurrentStep(1));
 	}, [dispatch]);
 

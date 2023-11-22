@@ -12,3 +12,8 @@ export const getCalculatePricesFloor = createSelector(
 	getCalculatePrices,
 	(gcp) => gcp.floor
 );
+
+export const getCalculatePricesIsSubmitted = createSelector(
+	getCalculatePrices,
+	(gcp) => gcp.isSubmitted
+);

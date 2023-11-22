@@ -39,7 +39,12 @@ interface StepModalProps extends PopUpProps {
 
 const getProductsSkeletons = () => {
 	return new Array(2).fill(0).map((i, idx) => {
-		return <ProductSkeleton key={`productskeleton${idx}`} />;
+		return (
+			<ProductSkeleton
+				className={cls.product}
+				key={`productskeleton${idx}`}
+			/>
+		);
 	});
 };
 
@@ -133,6 +138,7 @@ export const StepModal = memo((props: StepModalProps) => {
 			return (
 				<Product
 					checked={ifComponentChecked(p.id)}
+					className={cls.product}
 					onChange={generateRadioProductOnChangeHandler(p)}
 					type='radio'
 					title={p.title}
@@ -190,14 +196,17 @@ export const StepModal = memo((props: StepModalProps) => {
 			className={classNames(cls.StepModal, {}, [className])}
 		>
 			<div className={cls.header}>
-				<h2 className={cls.title}>{step?.title}</h2>
+				<h2 className={cls.title}>
+					{step?.title} {convertToRubbleFormat(summary)}
+				</h2>
 				<p className={cls.description}>
-					{step?.description} <br /> Промежуточная стоимость{' '}
-					{convertToRubbleFormat(summary)}
+					{step?.description} <br />{' '}
 				</p>
 				<Navbar />
 			</div>
-			<div className={cls.content}>{content}</div>
+			<div className={cls.content_wrapper}>
+				<div className={cls.content}>{content}</div>
+			</div>
 			<div className={cls.footer}>
 				<Button onClick={onCloseButtonClick}>Закрыть</Button>
 				<Button
