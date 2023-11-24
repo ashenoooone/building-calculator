@@ -1,5 +1,9 @@
 .Product {
-	@apply flex items-center;
+	@apply flex relative items-center cursor-pointer;
+}
+
+.hidden_input {
+	@apply absolute w-full h-full top-0 right-0 opacity-0 cursor-pointer;
 }
 
 .icon {

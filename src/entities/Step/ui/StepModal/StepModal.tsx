@@ -82,8 +82,8 @@ export const StepModal = memo((props: StepModalProps) => {
 
 	const generateRadioProductOnChangeHandler = useCallback(
 		(c: IComponent) => {
-			return (event: ChangeEvent<HTMLInputElement>) => {
-				if (event.target.checked) {
+			return (isChecked: boolean) => {
+				if (!isChecked) {
 					dispatch(
 						ResultSliceActions.addComponentToStep({
 							order: currentStep,
@@ -98,8 +98,8 @@ export const StepModal = memo((props: StepModalProps) => {
 
 	const generateCheckboxProductOnChangeHandler = useCallback(
 		(c: IComponent) => {
-			return (event: ChangeEvent<HTMLInputElement>) => {
-				if (event.target.checked) {
+			return (isChecked: boolean) => {
+				if (!isChecked) {
 					dispatch(
 						ResultSliceActions.addComponentToStep({
 							order: currentStep,

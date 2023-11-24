@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import cls from './Card.module.scss';
 import { classNames } from '~/shared/lib/classNames';
 
 export type CardStyle = 'default' | 'inverted' | 'custom';
 type Paddings = 'paddings_sm' | 'paddings_m' | 'paddings_xl';
 
-export interface CardProps {
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 	className?: string;
 	children?: ReactNode;
 	type?: CardStyle;
@@ -19,7 +19,8 @@ export const Card = (props: CardProps) => {
 		children,
 		paddings = 'paddings_sm',
 		type = 'default',
-		border = true
+		border = true,
+		...other
 	} = props;
 	return (
 		<div
@@ -28,6 +29,7 @@ export const Card = (props: CardProps) => {
 				cls[paddings],
 				cls[type]
 			])}
+			{...other}
 		>
 			{children}
 		</div>

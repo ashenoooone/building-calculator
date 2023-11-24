@@ -34,7 +34,7 @@ export const CalculatePrices = () => {
 			if (!mappedValue || mappedValue === '0') {
 				dispatch(calculatePricesSliceActions.setArea(1));
 			} else {
-				mappedValue = +mappedValue > 1000 ? 1000 : +mappedValue;
+				mappedValue = +mappedValue > 1000 ? 999 : +mappedValue;
 				dispatch(calculatePricesSliceActions.setArea(+mappedValue));
 			}
 		},

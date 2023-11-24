@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, memo, useMemo } from 'react';
+import React, { InputHTMLAttributes, memo, useCallback, useMemo } from 'react';
 import cls from './Product.module.scss';
 import { Radio } from '~/shared/ui/Radio';
 import { Card } from '~/shared/ui/Card';
@@ -10,8 +10,11 @@ import { classNames } from '~/shared/lib/classNames';
 
 type ProductPropsType = 'checkbox' | 'radio';
 
-type InputHTMLProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'>;
-interface ProductProps extends InputHTMLAttributes<HTMLInputElement> {
+type InputHTMLProps = Omit<
+	InputHTMLAttributes<HTMLInputElement>,
+	'type' | 'onChange'
+>;
+interface ProductProps extends InputHTMLProps {
 	className?: string;
 	title: string;
 	description: string;
@@ -19,6 +22,7 @@ interface ProductProps extends InputHTMLAttributes<HTMLInputElement> {
 	price: number;
 	checked?: boolean;
 	type?: ProductPropsType;
+	onChange?: (isChecked: boolean) => void;
 }
 
 export const Product = memo((props: ProductProps) => {
@@ -34,11 +38,15 @@ export const Product = memo((props: ProductProps) => {
 		...rest
 	} = props;
 
+	const onChangeHandler = useCallback(() => {
+		onChange(checked);
+	}, [checked, onChange]);
+
 	const controller = useMemo(() => {
 		if (type === 'checkbox') {
 			return (
 				<Checkbox
-					onChange={onChange}
+					readOnly
 					checked={checked}
 					className={cls.controller}
 				/>
@@ -47,18 +55,19 @@ export const Product = memo((props: ProductProps) => {
 
 		return (
 			<Radio
-				onChange={onChange}
+				readOnly
 				checked={checked}
 				className={cls.controller}
 			/>
 		);
-	}, [checked, onChange, type]);
+	}, [checked, type]);
 
 	return (
 		<Card
 			paddings='paddings_m'
 			border={!!checked}
 			type='inverted'
+			onClick={onChangeHandler}
 			className={classNames(cls.Product, {}, [className])}
 			{...rest}
 		>
