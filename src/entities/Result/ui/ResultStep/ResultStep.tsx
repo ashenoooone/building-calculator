@@ -81,7 +81,6 @@ export const ResultStep = (props: ResultStepProps) => {
 						<Line />
 						<div className='flex my-4 justify-between items-baseline'>
 							<Checkbox
-								onChange={generateProductOnChangeHandler(i)}
 								text={i.title}
 								checked={ifComponentChecked(i.id)}
 								textClasses='w-max'
