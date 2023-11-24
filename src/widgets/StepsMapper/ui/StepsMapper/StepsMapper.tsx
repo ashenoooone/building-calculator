@@ -14,6 +14,7 @@ import {
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 import { getResultSumm } from '~/entities/Result';
 import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
+import { Spinner } from '~/shared/ui/Spinner';
 
 export const StepsMapper = () => {
 	const currentStep = useSelector(getCurrentStepInfo);

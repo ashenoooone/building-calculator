@@ -29,7 +29,14 @@ export const CalculatePrices = () => {
 
 	const onAreaChange = useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
-			dispatch(calculatePricesSliceActions.setArea(+event.target.value));
+			let mappedValue: string | number | undefined =
+				event.target.value.match(/\d+/g)?.[0];
+			if (!mappedValue || mappedValue === '0') {
+				dispatch(calculatePricesSliceActions.setArea(1));
+			} else {
+				mappedValue = +mappedValue > 1000 ? 1000 : +mappedValue;
+				dispatch(calculatePricesSliceActions.setArea(+mappedValue));
+			}
 		},
 		[dispatch]
 	);

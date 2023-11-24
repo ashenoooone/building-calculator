@@ -5,7 +5,7 @@
 
 .title {
   font: var(--font-xxl);
-  @apply text-primary;
+  @apply text-primary inline-flex justify-between w-full;
 }
 
 .description {

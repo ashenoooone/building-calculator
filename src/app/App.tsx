@@ -14,6 +14,7 @@ import { StepsMapper } from '~/widgets/StepsMapper';
 import { useGetCalculatorVersionQuery } from '~/entities/Calculator';
 import { CALC_VERSION_LOCAL_STORAGE_KEY } from '~/shared/consts';
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
+import { Spinner } from '~/shared/ui/Spinner';
 
 export function App() {
 	const currentStep = useSelector(getCurrentStep);
@@ -49,7 +50,11 @@ export function App() {
 	}, [data, data?.version, dispatch]);
 
 	if (isLoading || isGetCalculatorVersionLoading) {
-		return <h1>Loading...</h1>;
+		return (
+			<div className='min-h-screen w-full flex items-center justify-center'>
+				<Spinner />
+			</div>
+		);
 	}
 
 	return (
