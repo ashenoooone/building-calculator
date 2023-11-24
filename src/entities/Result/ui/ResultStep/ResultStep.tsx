@@ -111,12 +111,7 @@ export const ResultStep = (props: ResultStepProps) => {
 				</>
 			);
 		});
-	}, [
-		generateProductOnChangeHandler,
-		ifComponentChecked,
-		resultStep.isMultiple,
-		resultStep.values
-	]);
+	}, [ifComponentChecked, resultStep.isMultiple, resultStep.values]);
 
 	return (
 		<Dropdown

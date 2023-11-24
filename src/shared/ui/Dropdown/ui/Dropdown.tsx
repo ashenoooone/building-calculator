@@ -30,7 +30,7 @@ export const Dropdown = (props: DropdownProps) => {
 					>
 						{trigger}
 						<ChevronUpIcon
-							className={`${open ? 'rotate-180 transform' : ''} h-5 w-5`}
+							className={`${!open ? 'rotate-180 transform' : ''} h-5 w-5`}
 						/>
 					</Disclosure.Button>
 					<Disclosure.Panel className={cls.panel}>{children}</Disclosure.Panel>
