@@ -1,9 +1,9 @@
 .CalculatePrices {
-	@apply flex items-center justify-between;
+	@apply flex items-center lg:justify-between justify-center lg:mt-0;
 }
 
 .form {
-	@apply flex flex-col gap-md mt-8;
+	@apply flex flex-col shrink-0 grow gap-md mt-8 w-full;
 }
 
 .image {

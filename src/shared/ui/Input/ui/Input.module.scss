@@ -1,25 +1,25 @@
 .Input {
-	@apply relative border-2 border-primary rounded-lg py-2 px-4 block;
+  @apply relative border-2 border-primary rounded-lg py-4 lg:py-2 px-4 block;
 }
 
 .label {
-	@apply right-1/2 text-primary left-2
+  @apply right-1/2 text-primary left-2
   absolute pointer-events-none top-1/2 -translate-y-1/2
-  bg-inverted-primary transition-all duration-300 px-1 w-max;
+  bg-inverted-primary transition-all duration-300 px-1 w-max text-2xl lg:text-base;
 }
 
 .input {
-	@apply outline-none w-full;
+  @apply outline-none w-full text-xl;
 
-	&:invalid {
-		@apply text-red-400;
-	}
+  &:invalid {
+    @apply text-red-400;
+  }
 
-	&:not(:placeholder-shown),
-	&:-webkit-autofill,
-	&:focus {
-		& ~ .label {
-			@apply right-1/2 text-primary top-0;
-		}
-	}
+  &:not(:placeholder-shown),
+  &:-webkit-autofill,
+  &:focus {
+    & ~ .label {
+      @apply right-1/2 text-primary -top-2;
+    }
+  }
 }

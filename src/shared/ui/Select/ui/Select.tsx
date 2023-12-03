@@ -66,7 +66,9 @@ export const Select = memo((props: SelectProps) => {
 						<span className='text-gray-400'>{placeholder}</span>
 					)}
 					{value && (
-						<span>{selectOptions.find((i) => i.value === value).content}</span>
+						<span className={cls.value}>
+							{selectOptions.find((i) => i.value === value).content}
+						</span>
 					)}
 					<span className={cls.icon_container}>
 						<ChevronDown
