@@ -3,7 +3,7 @@
 }
 
 .hint {
-	@apply absolute bg-primary bg-opacity-80 text-center rounded-lg text-inverted-primary p-2;
+	@apply absolute z-10 bg-primary bg-opacity-80 text-center rounded-lg text-inverted-primary p-2;
 }
 
 .top_left {

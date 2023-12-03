@@ -35,6 +35,7 @@ export function App() {
 	}, [currentStep, steps?.length]);
 
 	useEffect(() => {
+		// todo инкапсулировать в экшен логику по проверке версии
 		const localCalcVersion = JSON.parse(
 			localStorage.getItem(CALC_VERSION_LOCAL_STORAGE_KEY)
 		);
@@ -60,7 +61,7 @@ export function App() {
 	return (
 		<Page>
 			<Navbar className='px-10 pt-4' />
-			<div>{content}</div>
+			<div className='mt-10 px-10'>{content}</div>
 		</Page>
 	);
 }

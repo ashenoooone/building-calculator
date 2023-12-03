@@ -9,6 +9,7 @@ import { Transition } from '@headlessui/react';
 import { classNames } from '~/shared/lib/classNames';
 import cls from './Navlink.module.scss';
 import { useHover } from '~/shared/lib/useHover';
+import { Hint } from '~/shared/ui/Hint';
 
 export type NavlinkStatusType = 'active' | 'visited' | 'blocked';
 
@@ -49,33 +50,22 @@ export const Navlink = memo((props: NavlinkProps) => {
 
 	const content = useMemo(() => {
 		return (
-			<>
-				<div
-					style={style}
-					className={cls.title}
-				>
-					{title}
-				</div>
-				{text && (
-					<Transition
-						as='div'
-						show={isHover}
-						enter='transition-opacity duration-200'
-						enterFrom='opacity-0'
-						enterTo='opacity-100'
-						leave='transition-opacity duration-200'
-						leaveFrom='opacity-100'
-						leaveTo='opacity-0'
-						className={classNames(
-							cls.text,
-							{ [cls.text_inactive]: status === 'blocked' },
-							[]
-						)}
-					>
-						<span>{text}</span>
-					</Transition>
+			<Hint
+				hint={text}
+				className={classNames(
+					cls.text,
+					{ [cls.text_inactive]: status === 'blocked' },
+					[]
 				)}
-			</>
+				trigger={
+					<div
+						style={style}
+						className={cls.title}
+					>
+						{title}
+					</div>
+				}
+			/>
 		);
 	}, [isHover, status, style, text, title]);
 

@@ -38,7 +38,7 @@ export const Hint = (props: HintProps) => {
 	return (
 		<div
 			ref={hoverRef}
-			className={classNames(cls.Hint, {}, [className])}
+			className={classNames(cls.Hint, {}, [])}
 			{...rest}
 		>
 			{trigger}
@@ -51,7 +51,10 @@ export const Hint = (props: HintProps) => {
 				leave='transition-opacity duration-200'
 				leaveFrom='opacity-100'
 				leaveTo='opacity-0'
-				className={classNames(cls.hint, {}, [DirectionMapper[direction]])}
+				className={classNames(cls.hint, {}, [
+					DirectionMapper[direction],
+					className
+				])}
 			>
 				{hint}
 			</Transition>

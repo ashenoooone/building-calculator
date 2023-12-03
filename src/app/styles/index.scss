@@ -17,5 +17,6 @@ hr {
 
 body {
 	background: var(--bg-color);
-	font: var(--font-md);
+	font-family: var(--font-family-name);
+	@apply lg:text-xl lg:leading-7 text-2xl leading-7;
 }

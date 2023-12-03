@@ -66,9 +66,15 @@ export const ResultStep = (props: ResultStepProps) => {
 						title={resultStep.order}
 						clickable={false}
 					/>
-					<Text title={resultStep.title} />
+					<Text
+						titleClasses='lg:text-lg text-base'
+						title={resultStep.title}
+					/>
 				</div>
-				<Text text={convertToRubbleFormat(summ)} />
+				<Text
+					textClasses='text-lg lg:text-xl'
+					text={convertToRubbleFormat(summ)}
+				/>
 			</div>
 		);
 	}, [resultStep.order, resultStep.title, summ]);
@@ -101,7 +107,7 @@ export const ResultStep = (props: ResultStepProps) => {
 				<>
 					<Line />
 					<div className='flex my-4 justify-between items-baseline'>
-						<span className='w-max shrink-0'>{i.title}</span>
+						<span className='w-max shrink-0 text-md lg:text-lg'>{i.title}</span>
 						<Line
 							className='mx-3'
 							type='dashed'

@@ -14,7 +14,6 @@ import {
 import { useAppDispatch } from '~/shared/lib/useAppDispatch';
 import { getResultSumm } from '~/entities/Result';
 import { convertToRubbleFormat } from '~/shared/lib/convertToRubbleFormat';
-import { Spinner } from '~/shared/ui/Spinner';
 
 export const StepsMapper = () => {
 	const currentStep = useSelector(getCurrentStepInfo);
@@ -42,13 +41,16 @@ export const StepsMapper = () => {
 				type='inverted'
 			>
 				<Text
-					titleClasses='font-bold text-[20px] text-primary'
+					titleClasses='text-primary'
 					title={currentStep.title}
-					textClasses='text-[16px] mt-2'
+					textClasses='text-lg lg:text-xl mt-2'
 					text={currentStep.description}
 				/>
-				<hr className='mt-4 mb-4' />
-				<Text title={`Общая стоимость ${convertToRubbleFormat(totalPrice)}`} />
+				<hr className='lg:mt-4 lg:mb-4 mt-2 mb-2' />
+				<Text
+					titleClasses='text-lg lg:text-xl'
+					title={`Общая стоимость ${convertToRubbleFormat(totalPrice)}`}
+				/>
 				<Button
 					className={cls.choose_btn}
 					onClick={onOpenPopup}

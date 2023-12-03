@@ -42,12 +42,12 @@ export const Result = () => {
 			<div className={cls.header}>
 				<Text title='Предварительная смета' />
 				<div className={cls.buttons}>
-					<Button className='flex items-center gap-sm'>
+					<Button className='flex items-center gap-sm text-lg lg:text-xl'>
 						<DownloadIcon className='w-6 h-6' />
 						Скачать
 					</Button>
 					<Button
-						className='flex items-center gap-sm'
+						className='flex items-center gap-sm text-lg lg:text-xl'
 						onClick={onDropClick}
 					>
 						<AgainIcon className='w-6 h-6' />
@@ -75,20 +75,24 @@ export const Result = () => {
 						</div>
 						<ul className={cls.list}>
 							<li className='flex justify-between items-baseline'>
-								<span className='w-max shrink-0'>Площадь дома</span>
+								<span className='w-max text-lg lg:text-xl mt-2 shrink-0'>
+									Площадь дома
+								</span>
 								<Line
 									type='dashed'
 									className='mx-2'
 								/>
-								<span className='shrink-0'>{area} м²</span>
+								<span className='shrink-0 text-lg lg:text-xl'>{area} м²</span>
 							</li>
 							<li className='flex justify-between items-baseline'>
-								<span className='w-max shrink-0'>Этажей</span>
+								<span className='w-max text-lg lg:text-xl mt-2 shrink-0'>
+									Этажей
+								</span>
 								<Line
 									type='dashed'
 									className='mx-2'
 								/>
-								<span className='shrink-0'>{floors}</span>
+								<span className='shrink-0 text-lg lg:text-xl'>{floors}</span>
 							</li>
 						</ul>
 					</Card>
@@ -105,14 +109,20 @@ export const Result = () => {
 						</div>
 						<div className='text-gray-500'>
 							<Text
-								textClasses='mt-2'
+								textClasses='text-lg lg:text-xl mt-2'
 								text='Расчет включает в себя оценку стоимости материалов и объемов выполненных работ. Общая предварительная оценка затрат предоставляется.'
 							/>
 						</div>
 						<Line className='my-4' />
 						<div className='flex justify-between'>
-							<Text text='Общая стоимость' />
-							<Text text={convertToRubbleFormat(totalPrice)} />
+							<Text
+								textClasses='text-lg lg:text-xl'
+								text='Общая стоимость'
+							/>
+							<Text
+								textClasses='text-lg lg:text-xl'
+								text={convertToRubbleFormat(totalPrice)}
+							/>
 						</div>
 					</Card>
 				</div>

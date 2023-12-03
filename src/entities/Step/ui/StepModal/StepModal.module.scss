@@ -17,15 +17,15 @@
 }
 
 .product {
-  @apply h-[110px] basis-[calc(50%-0.5rem)];
+  @apply lg:h-[110px] w-full lg:basis-[calc(50%-0.5rem)];
 }
 
 .content_wrapper {
-  @apply grow
+  @apply grow;
 }
 
 .content {
-  @apply flex items-start flex-wrap gap-sm py-10 px-4 w-full;
+  @apply flex items-start flex-col lg:flex-row flex-wrap gap-sm py-10 px-4 w-full;
 }
 
 .footer {
